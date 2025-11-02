@@ -1,0 +1,376 @@
+!SESSION 2025-10-28 09:36:05.994 -----------------------------------------------
+eclipse.buildId=4.30.0.20231201-1200
+java.version=17.0.10
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product -data C:\tests\ProjTiny -product org.eclipse.epp.package.java.product
+
+This is a continuation of log file C:\tests\ProjTiny\.metadata\.bak_0.log
+Created Time: 2025-10-28 09:36:10.039
+
+!ENTRY org.eclipse.wb.rcp.swing2swt 4 0 2025-10-28 09:36:10.039
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.wb.rcp.swing2swt [592]
+  Unresolved requirement: Require-Bundle: org.eclipse.wb.swt
+    -> Bundle-SymbolicName: org.eclipse.wb.swt; bundle-version="1.9.500.202402200547"; singleton:="true"
+       org.eclipse.wb.swt [603]
+         Unresolved requirement: Require-Bundle: org.eclipse.pde.core
+           -> Bundle-SymbolicName: org.eclipse.pde.core; bundle-version="3.18.0.v20240215-1456"; singleton:="true"
+              org.eclipse.pde.core [559]
+                Unresolved requirement: Import-Package: aQute.bnd.build; version="[4.4.0,5.0.0)"
+                  -> Export-Package: aQute.bnd.build; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.5.0"; uses:="aQute.bnd.build.api,aQute.bnd.exceptions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.maven.support,aQute.bnd.osgi,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.action,aQute.bnd.service.progress,aQute.bnd.service.specifications,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+                     biz.aQute.bndlib [519]
+                       Unresolved requirement: Import-Package: org.slf4j; version="[1.7.0,2.0.0)"
+                         -> Export-Package: org.slf4j; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="1.7.36"
+                            slf4j.api [622]
+                              Unresolved requirement: Require-Capability: osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.processor)(version>=1.0.0)(!(version>=2.0.0)))"
+                                -> Provide-Capability: osgi.extender; osgi.extender="osgi.serviceloader.processor"; version:Version="1.0.0"; uses:="org.apache.aries.spifly"
+                                   org.apache.aries.spifly.dynamic.bundle [41]
+                              Unresolved requirement: Require-Capability: osgi.serviceloader; osgi.serviceloader="org.slf4j.spi.SLF4JServiceProvider"; filter:="(osgi.serviceloader=org.slf4j.spi.SLF4JServiceProvider)"
+                                -> Provide-Capability: osgi.serviceloader; osgi.serviceloader="org.slf4j.spi.SLF4JServiceProvider"; register:="ch.qos.logback.classic.spi.LogbackServiceProvider"
+                                   ch.qos.logback.classic [7]
+                                     Unresolved requirement: Import-Package: jakarta.servlet; version="[5.0.0,6.0.0)"; resolution:="optional"
+                                     Unresolved requirement: Import-Package: jakarta.servlet.http; version="[5.0.0,6.0.0)"; resolution:="optional"
+                                     Unresolved requirement: Require-Capability: osgi.serviceloader; osgi.serviceloader="ch.qos.logback.classic.spi.Configurator"; filter:="(osgi.serviceloader=ch.qos.logback.classic.spi.Configurator)"; resolution:="optional"; cardinality:="multiple"
+                                     Unresolved requirement: Import-Package: org.slf4j; version="[2.0.0,3.0.0)"
+                                       -> Export-Package: org.slf4j; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="2.0.13"; uses:="org.slf4j.event,org.slf4j.helpers,org.slf4j.spi"
+                                     Unresolved requirement: Require-Capability: osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.processor)(version>=1.0.0)(!(version>=2.0.0)))"; resolution:="optional"
+                                       -> Provide-Capability: osgi.extender; osgi.extender="osgi.serviceloader.processor"; version:Version="1.0.0"; uses:="org.apache.aries.spifly"
+                                     Unresolved requirement: Import-Package: org.slf4j.spi; version="[2.0.0,3.0.0)"
+                                       -> Export-Package: org.slf4j.spi; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="2.0.13"; uses:="org.slf4j,org.slf4j.event,org.slf4j.helpers"
+                                     Unresolved requirement: Import-Package: org.slf4j.helpers; version="[2.0.0,3.0.0)"
+                                       -> Export-Package: org.slf4j.helpers; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="2.0.13"; uses:="org.slf4j,org.slf4j.event,org.slf4j.spi"
+                                     Unresolved requirement: Require-Capability: osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.registrar)(version>=1.0.0)(!(version>=2.0.0)))"
+                                       -> Provide-Capability: osgi.extender; osgi.extender="osgi.serviceloader.registrar"; version:Version="1.0.0"
+                                     Unresolved requirement: Import-Package: org.slf4j.event; version="[2.0.0,3.0.0)"
+                                       -> Export-Package: org.slf4j.event; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="2.0.13"; uses:="org.slf4j,org.slf4j.helpers"
+                Unresolved requirement: Import-Package: aQute.bnd.osgi; version="[5.5.0,8.0.0)"
+                  -> Export-Package: aQute.bnd.osgi; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="7.0.0"; uses:="aQute.bnd.classfile,aQute.bnd.header,aQute.bnd.http,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.specifications,aQute.bnd.signatures,aQute.bnd.stream,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.resource,org.osgi.util.promise,org.slf4j"
+                Unresolved requirement: Import-Package: aQute.bnd.osgi.resource; version="[4.3.0,6.0.0)"
+                  -> Export-Package: aQute.bnd.osgi.resource; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="5.0.0"; uses:="aQute.bnd.build.model,aQute.bnd.build.model.clauses,aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.service.resource,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository"
+                Unresolved requirement: Import-Package: aQute.bnd.service; version="[4.7.0,5.0.0)"
+                  -> Export-Package: aQute.bnd.service; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.8.0"; uses:="aQute.bnd.build,aQute.bnd.osgi,aQute.bnd.version,aQute.service.reporter,org.osgi.util.promise"
+                Unresolved requirement: Import-Package: aQute.bnd.build.model; version="[4.2.0,5.0.0)"
+                  -> Export-Package: aQute.bnd.build.model; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.3.0"; uses:="aQute.bnd.build,aQute.bnd.build.model.clauses,aQute.bnd.build.model.conversions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.osgi,aQute.bnd.properties,aQute.bnd.version,org.osgi.resource"
+                Unresolved requirement: Import-Package: aQute.bnd.osgi.repository; version="[3.0.0,4.0.0)"
+                  -> Export-Package: aQute.bnd.osgi.repository; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="3.1.0"; uses:="aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.osgi.resource,aQute.bnd.version,aQute.service.reporter,javax.xml.stream,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+                Unresolved requirement: Import-Package: aQute.bnd.properties; version="[2.0.0,3.0.0)"
+                  -> Export-Package: aQute.bnd.properties; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.0.0"
+                Unresolved requirement: Import-Package: aQute.bnd.header; version="[2.5.0,3.0.0)"
+                  -> Export-Package: aQute.bnd.header; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.6.0"; uses:="aQute.bnd.stream,aQute.bnd.version,aQute.service.reporter"
+                Unresolved requirement: Import-Package: aQute.bnd.version; version="[2.2.0,3.0.0)"
+                  -> Export-Package: aQute.bnd.version; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.3.0"; uses:="org.osgi.framework"
+                Unresolved requirement: Import-Package: aQute.service.reporter; version="[1.2.0,2.0.0)"
+                  -> Export-Package: aQute.service.reporter; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.2.0"
+  Unresolved requirement: Require-Bundle: org.eclipse.wb.rcp
+    -> Bundle-SymbolicName: org.eclipse.wb.rcp; bundle-version="1.9.600.202402082106"; singleton:="true"
+       org.eclipse.wb.rcp [586]
+         Unresolved requirement: Require-Bundle: org.eclipse.wb.swt
+           -> Bundle-SymbolicName: org.eclipse.wb.swt; bundle-version="1.9.500.202402200547"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.eclipse.pde.core
+           -> Bundle-SymbolicName: org.eclipse.pde.core; bundle-version="3.18.0.v20240215-1456"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.eclipse.pde.ui
+           -> Bundle-SymbolicName: org.eclipse.pde.ui; bundle-version="3.15.100.v20240215-1631"; singleton:="true"
+              org.eclipse.pde.ui [570]
+                Unresolved requirement: Import-Package: aQute.bnd.build; version="4.5.0"
+                  -> Export-Package: aQute.bnd.build; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.5.0"; uses:="aQute.bnd.build.api,aQute.bnd.exceptions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.maven.support,aQute.bnd.osgi,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.action,aQute.bnd.service.progress,aQute.bnd.service.specifications,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+                Unresolved requirement: Import-Package: aQute.bnd.osgi.repository; version="[3.0.0,4.0.0)"
+                  -> Export-Package: aQute.bnd.osgi.repository; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="3.1.0"; uses:="aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.osgi.resource,aQute.bnd.version,aQute.service.reporter,javax.xml.stream,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+                Unresolved requirement: Import-Package: aQute.bnd.service; version="[4.8.0,5.0.0)"
+                  -> Export-Package: aQute.bnd.service; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.8.0"; uses:="aQute.bnd.build,aQute.bnd.osgi,aQute.bnd.version,aQute.service.reporter,org.osgi.util.promise"
+                Unresolved requirement: Require-Bundle: org.eclipse.pde.launching; bundle-version="[3.11.200,4.0.0)"; visibility:="reexport"
+                  -> Bundle-SymbolicName: org.eclipse.pde.launching; bundle-version="3.12.0.v20240214-2143"; singleton:="true"
+                     org.eclipse.pde.launching [566]
+                       Unresolved requirement: Require-Bundle: org.eclipse.pde.core; bundle-version="[3.2.0,4.0.0)"
+                         -> Bundle-SymbolicName: org.eclipse.pde.core; bundle-version="3.18.0.v20240215-1456"; singleton:="true"
+                Unresolved requirement: Import-Package: aQute.bnd.osgi.resource; version="[4.3.0,6.0.0)"
+                  -> Export-Package: aQute.bnd.osgi.resource; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="5.0.0"; uses:="aQute.bnd.build.model,aQute.bnd.build.model.clauses,aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.service.resource,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository"
+                Unresolved requirement: Import-Package: aQute.bnd.build.model; version="[4.2.0,5.0.0)"
+                  -> Export-Package: aQute.bnd.build.model; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.3.0"; uses:="aQute.bnd.build,aQute.bnd.build.model.clauses,aQute.bnd.build.model.conversions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.osgi,aQute.bnd.properties,aQute.bnd.version,org.osgi.resource"
+                Unresolved requirement: Import-Package: aQute.bnd.version; version="[2.2.0,3.0.0)"
+                  -> Export-Package: aQute.bnd.version; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.3.0"; uses:="org.osgi.framework"
+                Unresolved requirement: Import-Package: biz.aQute.resolve; version="[9.0.0,10.0.0)"
+                  -> Export-Package: biz.aQute.resolve; bundle-symbolic-name="biz.aQute.resolve"; bnd-plugins="true"; bundle-version="7.0.0.202310060912"; version="9.0.0"; uses:="aQute.bnd.build,aQute.bnd.build.model,aQute.bnd.build.model.clauses,aQute.bnd.build.model.conversions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.osgi,aQute.bnd.osgi.repository,aQute.bnd.osgi.resource,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.resolve.hook,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.log,org.osgi.service.repository,org.osgi.service.resolver"
+                     biz.aQute.resolve [521]
+                       Unresolved requirement: Import-Package: aQute.bnd.build; version="[4.5.0,5.0.0)"
+                         -> Export-Package: aQute.bnd.build; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.5.0"; uses:="aQute.bnd.build.api,aQute.bnd.exceptions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.maven.support,aQute.bnd.osgi,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.action,aQute.bnd.service.progress,aQute.bnd.service.specifications,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+                       Unresolved requirement: Import-Package: aQute.bnd.service; version="[4.8.0,5.0.0)"
+                         -> Export-Package: aQute.bnd.service; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.8.0"; uses:="aQute.bnd.build,aQute.bnd.osgi,aQute.bnd.version,aQute.service.reporter,org.osgi.util.promise"
+                       Unresolved requirement: Import-Package: aQute.bnd.service.export; version="[1.0.0,2.0.0)"
+                         -> Export-Package: aQute.bnd.service.export; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.0.0"; uses:="aQute.bnd.build,aQute.bnd.osgi"
+                       Unresolved requirement: Import-Package: aQute.bnd.header; version="[2.6.0,3.0.0)"
+                         -> Export-Package: aQute.bnd.header; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.6.0"; uses:="aQute.bnd.stream,aQute.bnd.version,aQute.service.reporter"
+                       Unresolved requirement: Import-Package: aQute.bnd.service.resolve.hook; version="[1.0.0,2.0.0)"
+                         -> Export-Package: aQute.bnd.service.resolve.hook; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.0.0"; uses:="org.osgi.resource"
+                       Unresolved requirement: Import-Package: aQute.service.reporter; version="[1.2.0,2.0.0)"
+                         -> Export-Package: aQute.service.reporter; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.2.0"
+                       Unresolved requirement: Import-Package: aQute.bnd.http; version="[2.0.0,3.0.0)"
+                         -> Export-Package: aQute.bnd.http; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.0.0"; uses:="aQute.bnd.osgi,aQute.bnd.service,aQute.bnd.service.progress,aQute.bnd.service.url,aQute.service.reporter,org.osgi.util.promise"
+                       Unresolved requirement: Import-Package: aQute.bnd.annotation.plugin; version="[1.1.0,2.0.0)"
+                         -> Export-Package: aQute.bnd.annotation.plugin; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.1.0"
+                       Unresolved requirement: Import-Package: aQute.bnd.build.model.clauses; version="[2.5.0,3.0.0)"
+                         -> Export-Package: aQute.bnd.build.model.clauses; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.5.0"; uses:="aQute.bnd.header,aQute.bnd.osgi"
+                       Unresolved requirement: Import-Package: aQute.bnd.help; version="[2.0.0,3.0.0)"
+                         -> Export-Package: aQute.bnd.help; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.0.0"; uses:="aQute.bnd.osgi"
+                       Unresolved requirement: Import-Package: aQute.bnd.deployer.repository; version="[5.0.0,6.0.0)"
+                         -> Export-Package: aQute.bnd.deployer.repository; bundle-symbolic-name="biz.aQute.repository"; bnd-plugins="true"; bundle-version="7.0.0.202310060912"; version="5.0.0"; uses:="aQute.bnd.annotation.plugin,aQute.bnd.deployer.repository.api,aQute.bnd.osgi.repository,aQute.bnd.repository.osgi,aQute.bnd.service,aQute.bnd.service.progress,aQute.bnd.service.url,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.coordinator,org.osgi.service.log,org.osgi.service.repository"
+                            biz.aQute.repository [520]
+                              Unresolved requirement: Import-Package: aQute.bnd.service.maven; version="[1.0.0,2.0.0)"
+                                -> Export-Package: aQute.bnd.service.maven; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.0.0"; uses:="aQute.bnd.util.dto"
+                              Unresolved requirement: Import-Package: aQute.bnd.http; version="[2.0.0,3.0.0)"
+                                -> Export-Package: aQute.bnd.http; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.0.0"; uses:="aQute.bnd.osgi,aQute.bnd.service,aQute.bnd.service.progress,aQute.bnd.service.url,aQute.service.reporter,org.osgi.util.promise"
+                              Unresolved requirement: Import-Package: aQute.bnd.osgi.resource; version="[5.0.0,6.0.0)"
+                                -> Export-Package: aQute.bnd.osgi.resource; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="5.0.0"; uses:="aQute.bnd.build.model,aQute.bnd.build.model.clauses,aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.service.resource,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository"
+                              Unresolved requirement: Import-Package: aQute.bnd.service.resource; version="[1.1.0,2.0.0)"
+                                -> Export-Package: aQute.bnd.service.resource; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.1.0"; uses:="org.osgi.resource"
+                              Unresolved requirement: Import-Package: aQute.service.reporter; version="[1.2.0,2.0.0)"
+                                -> Export-Package: aQute.service.reporter; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.2.0"
+                              Unresolved requirement: Import-Package: aQute.bnd.osgi.repository; version="[3.1.0,4.0.0)"
+                                -> Export-Package: aQute.bnd.osgi.repository; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="3.1.0"; uses:="aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.osgi.resource,aQute.bnd.version,aQute.service.reporter,javax.xml.stream,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+                              Unresolved requirement: Import-Package: aQute.bnd.service.export; version="[1.0.0,2.0.0)"
+                                -> Export-Package: aQute.bnd.service.export; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.0.0"; uses:="aQute.bnd.build,aQute.bnd.osgi"
+                              Unresolved requirement: Import-Package: aQute.bnd.header; version="[2.6.0,3.0.0)"
+                                -> Export-Package: aQute.bnd.header; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.6.0"; uses:="aQute.bnd.stream,aQute.bnd.version,aQute.service.reporter"
+                              Unresolved requirement: Import-Package: aQute.bnd.service.release; version="[1.0.0,2.0.0)"
+                                -> Export-Package: aQute.bnd.service.release; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.0.0"; uses:="aQute.bnd.build"
+                              Unresolved requirement: Import-Package: aQute.bnd.maven; version="[3.4.0,4.0.0)"
+                                -> Export-Package: aQute.bnd.maven; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="3.4.0"; uses:="aQute.bnd.build,aQute.bnd.osgi,aQute.bnd.osgi.resource,aQute.bnd.service,aQute.bnd.version,aQute.service.reporter,org.osgi.resource"
+                              Unresolved requirement: Import-Package: aQute.bnd.osgi; version="[7.0.0,8.0.0)"
+                                -> Export-Package: aQute.bnd.osgi; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="7.0.0"; uses:="aQute.bnd.classfile,aQute.bnd.header,aQute.bnd.http,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.specifications,aQute.bnd.signatures,aQute.bnd.stream,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.resource,org.osgi.util.promise,org.slf4j"
+                              Unresolved requirement: Import-Package: aQute.bnd.util.repository; version="[2.1.0,3.0.0)"
+                                -> Export-Package: aQute.bnd.util.repository; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.1.0"; uses:="aQute.bnd.service,aQute.service.reporter,org.osgi.util.promise"
+                              Unresolved requirement: Import-Package: aQute.bnd.service.url; version="[2.0.0,3.0.0)"
+                                -> Export-Package: aQute.bnd.service.url; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.0.0"
+                              Unresolved requirement: Import-Package: aQute.bnd.annotation.plugin; version="[1.1.0,2.0.0)"
+                                -> Export-Package: aQute.bnd.annotation.plugin; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.1.0"
+                              Unresolved requirement: Import-Package: aQute.bnd.service; version="[4.8.0,5.0.0)"
+                                -> Export-Package: aQute.bnd.service; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.8.0"; uses:="aQute.bnd.build,aQute.bnd.osgi,aQute.bnd.version,aQute.service.reporter,org.osgi.util.promise"
+                              Unresolved requirement: Import-Package: aQute.bnd.filerepo; version="[1.0.0,2.0.0)"
+                                -> Export-Package: aQute.bnd.filerepo; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.0.0"; uses:="aQute.bnd.version"
+                              Unresolved requirement: Import-Package: aQute.bnd.version; version="[2.3.0,3.0.0)"
+                                -> Export-Package: aQute.bnd.version; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.3.0"; uses:="org.osgi.framework"
+                              Unresolved requirement: Import-Package: aQute.bnd.service.progress; version="[1.3.0,1.4.0)"
+                                -> Export-Package: aQute.bnd.service.progress; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.3.0"
+                              Unresolved requirement: Import-Package: aQute.bnd.service.repository; version="[1.6.0,2.0.0)"
+                                -> Export-Package: aQute.bnd.service.repository; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.6.0"; uses:="aQute.bnd.service,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.resource"
+                              Unresolved requirement: Import-Package: aQute.bnd.service.clipboard; version="[1.0.0,2.0.0)"
+                                -> Export-Package: aQute.bnd.service.clipboard; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.0.0"
+                              Unresolved requirement: Import-Package: org.slf4j; version="[1.7.0,2.0.0)"
+                                -> Export-Package: org.slf4j; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="1.7.36"
+                              Unresolved requirement: Import-Package: aQute.bnd.build; version="[4.5.0,5.0.0)"
+                                -> Export-Package: aQute.bnd.build; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.5.0"; uses:="aQute.bnd.build.api,aQute.bnd.exceptions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.maven.support,aQute.bnd.osgi,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.action,aQute.bnd.service.progress,aQute.bnd.service.specifications,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+                              Unresolved requirement: Import-Package: aQute.bnd.util.dto; version="[1.0.0,2.0.0)"
+                                -> Export-Package: aQute.bnd.util.dto; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.0.0"
+                       Unresolved requirement: Import-Package: aQute.bnd.build.model.conversions; version="[1.2.0,2.0.0)"
+                         -> Export-Package: aQute.bnd.build.model.conversions; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.2.0"; uses:="aQute.bnd.build.model,aQute.bnd.build.model.clauses,org.osgi.resource"
+                       Unresolved requirement: Import-Package: aQute.bnd.util.dto; version="[1.0.0,2.0.0)"
+                         -> Export-Package: aQute.bnd.util.dto; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.0.0"
+                       Unresolved requirement: Import-Package: aQute.bnd.osgi; version="[7.0.0,8.0.0)"
+                         -> Export-Package: aQute.bnd.osgi; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="7.0.0"; uses:="aQute.bnd.classfile,aQute.bnd.header,aQute.bnd.http,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.specifications,aQute.bnd.signatures,aQute.bnd.stream,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.resource,org.osgi.util.promise,org.slf4j"
+                       Unresolved requirement: Import-Package: aQute.bnd.osgi.resource; version="[5.0.0,6.0.0)"
+                         -> Export-Package: aQute.bnd.osgi.resource; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="5.0.0"; uses:="aQute.bnd.build.model,aQute.bnd.build.model.clauses,aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.service.resource,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository"
+                       Unresolved requirement: Import-Package: aQute.bnd.build.model; version="[4.3.0,5.0.0)"
+                         -> Export-Package: aQute.bnd.build.model; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.3.0"; uses:="aQute.bnd.build,aQute.bnd.build.model.clauses,aQute.bnd.build.model.conversions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.osgi,aQute.bnd.properties,aQute.bnd.version,org.osgi.resource"
+                       Unresolved requirement: Import-Package: aQute.bnd.help.instructions; version="[1.7.0,2.0.0)"
+                         -> Export-Package: aQute.bnd.help.instructions; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.7.0"; uses:="aQute.bnd.header,aQute.bnd.help,aQute.bnd.osgi"
+                       Unresolved requirement: Import-Package: org.slf4j; version="[1.7.0,2.0.0)"
+                         -> Export-Package: org.slf4j; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="1.7.36"
+                       Unresolved requirement: Import-Package: aQute.bnd.osgi.repository; version="[3.1.0,4.0.0)"
+                         -> Export-Package: aQute.bnd.osgi.repository; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="3.1.0"; uses:="aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.osgi.resource,aQute.bnd.version,aQute.service.reporter,javax.xml.stream,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+                       Unresolved requirement: Import-Package: aQute.bnd.version; version="[2.3.0,3.0.0)"
+                         -> Export-Package: aQute.bnd.version; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.3.0"; uses:="org.osgi.framework"
+                       Unresolved requirement: Import-Package: aQute.bnd.repository.osgi; version="[1.1.0,2.0.0)"
+                         -> Export-Package: aQute.bnd.repository.osgi; bundle-symbolic-name="biz.aQute.repository"; bnd-plugins="true"; bundle-version="7.0.0.202310060912"; version="1.1.1"; uses:="aQute.bnd.annotation.plugin,aQute.bnd.osgi.repository,aQute.bnd.service,aQute.bnd.service.repository,aQute.bnd.version,aQute.service.reporter,org.osgi.resource"
+                       Unresolved requirement: Import-Package: aQute.bnd.service.resource; version="[1.1.0,2.0.0)"
+                         -> Export-Package: aQute.bnd.service.resource; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.1.0"; uses:="org.osgi.resource"
+                Unresolved requirement: Import-Package: aQute.bnd.osgi; version="[5.6.0,8.0.0)"
+                  -> Export-Package: aQute.bnd.osgi; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="7.0.0"; uses:="aQute.bnd.classfile,aQute.bnd.header,aQute.bnd.http,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.specifications,aQute.bnd.signatures,aQute.bnd.stream,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.resource,org.osgi.util.promise,org.slf4j"
+                Unresolved requirement: Import-Package: aQute.service.reporter; version="1.2.0"
+                  -> Export-Package: aQute.service.reporter; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.2.0"
+                Unresolved requirement: Require-Bundle: org.eclipse.pde.ds.core; bundle-version="1.3.300"
+                  -> Bundle-SymbolicName: org.eclipse.pde.ds.core; bundle-version="1.3.300.v20240203-1841"; singleton:="true"
+                     org.eclipse.pde.ds.core [562]
+                       Unresolved requirement: Require-Bundle: org.eclipse.pde.core; bundle-version="[3.3.0,4.0.0)"
+                         -> Bundle-SymbolicName: org.eclipse.pde.core; bundle-version="3.18.0.v20240215-1456"; singleton:="true"
+                Unresolved requirement: Import-Package: aQute.bnd.header; version="[2.5.0,3.0.0)"
+                  -> Export-Package: aQute.bnd.header; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.6.0"; uses:="aQute.bnd.stream,aQute.bnd.version,aQute.service.reporter"
+                Unresolved requirement: Import-Package: aQute.bnd.help; version="2.0.0"
+                  -> Export-Package: aQute.bnd.help; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.0.0"; uses:="aQute.bnd.osgi"
+                Unresolved requirement: Import-Package: aQute.bnd.properties; version="[2.0.0,3.0.0)"
+                  -> Export-Package: aQute.bnd.properties; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.0.0"
+                Unresolved requirement: Require-Bundle: org.eclipse.pde.core; bundle-version="[3.17.200,4.0.0)"; visibility:="reexport"
+                  -> Bundle-SymbolicName: org.eclipse.pde.core; bundle-version="3.18.0.v20240215-1456"; singleton:="true"
+                Unresolved requirement: Require-Bundle: org.eclipse.pde.bnd.ui; bundle-version="1.0.0"
+                  -> Bundle-SymbolicName: org.eclipse.pde.bnd.ui; bundle-version="1.0.0.v20240212-1145"; singleton:="true"
+                     org.eclipse.pde.bnd.ui [557]
+                       Unresolved requirement: Import-Package: aQute.bnd.http; version="2.0.0"
+                         -> Export-Package: aQute.bnd.http; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.0.0"; uses:="aQute.bnd.osgi,aQute.bnd.service,aQute.bnd.service.progress,aQute.bnd.service.url,aQute.service.reporter,org.osgi.util.promise"
+                       Unresolved requirement: Import-Package: aQute.bnd.osgi.resource; version="[5.0.0,6.0.0)"
+                         -> Export-Package: aQute.bnd.osgi.resource; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="5.0.0"; uses:="aQute.bnd.build.model,aQute.bnd.build.model.clauses,aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.service.resource,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository"
+                       Unresolved requirement: Import-Package: aQute.bnd.service; version="4.8.0"
+                         -> Export-Package: aQute.bnd.service; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.8.0"; uses:="aQute.bnd.build,aQute.bnd.osgi,aQute.bnd.version,aQute.service.reporter,org.osgi.util.promise"
+                       Unresolved requirement: Import-Package: aQute.bnd.build; version="4.5.0"
+                         -> Export-Package: aQute.bnd.build; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.5.0"; uses:="aQute.bnd.build.api,aQute.bnd.exceptions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.maven.support,aQute.bnd.osgi,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.action,aQute.bnd.service.progress,aQute.bnd.service.specifications,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+                       Unresolved requirement: Import-Package: aQute.bnd.header; version="2.6.0"
+                         -> Export-Package: aQute.bnd.header; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.6.0"; uses:="aQute.bnd.stream,aQute.bnd.version,aQute.service.reporter"
+                       Unresolved requirement: Import-Package: aQute.bnd.osgi; version="[7.0.0,8.0.0)"
+                         -> Export-Package: aQute.bnd.osgi; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="7.0.0"; uses:="aQute.bnd.classfile,aQute.bnd.header,aQute.bnd.http,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.specifications,aQute.bnd.signatures,aQute.bnd.stream,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.resource,org.osgi.util.promise,org.slf4j"
+                       Unresolved requirement: Import-Package: aQute.bnd.build.model.clauses; version="2.5.0"
+                         -> Export-Package: aQute.bnd.build.model.clauses; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.5.0"; uses:="aQute.bnd.header,aQute.bnd.osgi"
+                       Unresolved requirement: Import-Package: aQute.bnd.repository.osgi; version="[1.1.1,2.0.0)"
+                         -> Export-Package: aQute.bnd.repository.osgi; bundle-symbolic-name="biz.aQute.repository"; bnd-plugins="true"; bundle-version="7.0.0.202310060912"; version="1.1.1"; uses:="aQute.bnd.annotation.plugin,aQute.bnd.osgi.repository,aQute.bnd.service,aQute.bnd.service.repository,aQute.bnd.version,aQute.service.reporter,org.osgi.resource"
+                       Unresolved requirement: Import-Package: aQute.bnd.build.model; version="4.3.0"
+                         -> Export-Package: aQute.bnd.build.model; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.3.0"; uses:="aQute.bnd.build,aQute.bnd.build.model.clauses,aQute.bnd.build.model.conversions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.osgi,aQute.bnd.properties,aQute.bnd.version,org.osgi.resource"
+                       Unresolved requirement: Import-Package: aQute.service.reporter; version="[1.2.0,2.0.0)"
+                         -> Export-Package: aQute.service.reporter; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.2.0"
+                       Unresolved requirement: Import-Package: org.bndtools.templating; version="[2.0.0,3.0.0)"
+                         -> Export-Package: org.bndtools.templating; bundle-symbolic-name="org.bndtools.templating"; bundle-version="7.0.0.202310060912"; version="2.0.0"; uses:="aQute.service.reporter,org.eclipse.core.runtime,org.osgi.framework,org.osgi.service.metatype,org.osgi.util.promise"
+                            org.bndtools.templating [544]
+                              Unresolved requirement: Import-Package: com.google.appengine.api; resolution:="optional"
+                              Unresolved requirement: Import-Package: com.google.apphosting.api; resolution:="optional"
+                              Unresolved requirement: Import-Package: aQute.bnd.osgi; version="[7.0.0,8.0.0)"
+                                -> Export-Package: aQute.bnd.osgi; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="7.0.0"; uses:="aQute.bnd.classfile,aQute.bnd.header,aQute.bnd.http,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.specifications,aQute.bnd.signatures,aQute.bnd.stream,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.resource,org.osgi.util.promise,org.slf4j"
+                              Unresolved requirement: Import-Package: aQute.service.reporter; version="[1.2.0,2.0.0)"
+                                -> Export-Package: aQute.service.reporter; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.2.0"
+                       Unresolved requirement: Import-Package: org.bndtools.templating.util; version="[1.0.0,2.0.0)"
+                         -> Export-Package: org.bndtools.templating.util; bundle-symbolic-name="org.bndtools.templating"; bundle-version="7.0.0.202310060912"; version="1.0.0"; uses:="org.osgi.service.metatype"
+                Unresolved requirement: Import-Package: aQute.bnd.build.model.clauses; version="2.5.0"
+                  -> Export-Package: aQute.bnd.build.model.clauses; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.5.0"; uses:="aQute.bnd.header,aQute.bnd.osgi"
+                Unresolved requirement: Import-Package: org.bndtools.templating; version="[2.0.0,3.0.0)"
+                  -> Export-Package: org.bndtools.templating; bundle-symbolic-name="org.bndtools.templating"; bundle-version="7.0.0.202310060912"; version="2.0.0"; uses:="aQute.service.reporter,org.eclipse.core.runtime,org.osgi.framework,org.osgi.service.metatype,org.osgi.util.promise"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.apache.aries.spifly.dynamic.bundle [osgi.identity; type="osgi.bundle"; version:Version="1.3.7"; osgi.identity="org.apache.aries.spifly.dynamic.bundle"] because it is exposed to package 'org.objectweb.asm' from resources org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"] and org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.6.0"; osgi.identity="org.objectweb.asm"] via two dependency chains.
+
+Chain 1:
+  org.apache.aries.spifly.dynamic.bundle [osgi.identity; type="osgi.bundle"; version:Version="1.3.7"; osgi.identity="org.apache.aries.spifly.dynamic.bundle"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(&(version>=9.6.0)(!(version>=10.0.0))))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"]
+
+Chain 2:
+  org.apache.aries.spifly.dynamic.bundle [osgi.identity; type="osgi.bundle"; version:Version="1.3.7"; osgi.identity="org.apache.aries.spifly.dynamic.bundle"]
+    import: (&(osgi.wiring.package=org.objectweb.asm.commons)(&(version>=9.6.0)(!(version>=10.0.0))))
+     |
+    export: osgi.wiring.package=org.objectweb.asm.commons; uses:=org.objectweb.asm
+  org.objectweb.asm.commons [osgi.identity; type="osgi.bundle"; version:Version="9.6.0"; osgi.identity="org.objectweb.asm.commons"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(version>=9.6.0))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.6.0"; osgi.identity="org.objectweb.asm"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.wb.swt 4 0 2025-10-28 09:36:10.063
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.wb.swt [603]
+  Unresolved requirement: Require-Bundle: org.eclipse.pde.core
+    -> Bundle-SymbolicName: org.eclipse.pde.core; bundle-version="3.18.0.v20240215-1456"; singleton:="true"
+       org.eclipse.pde.core [559]
+         Unresolved requirement: Import-Package: aQute.bnd.build; version="[4.4.0,5.0.0)"
+           -> Export-Package: aQute.bnd.build; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.5.0"; uses:="aQute.bnd.build.api,aQute.bnd.exceptions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.maven.support,aQute.bnd.osgi,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.action,aQute.bnd.service.progress,aQute.bnd.service.specifications,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+              biz.aQute.bndlib [519]
+                Unresolved requirement: Import-Package: org.slf4j; version="[1.7.0,2.0.0)"
+                  -> Export-Package: org.slf4j; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="1.7.36"
+                     slf4j.api [622]
+                       Unresolved requirement: Require-Capability: osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.processor)(version>=1.0.0)(!(version>=2.0.0)))"
+                         -> Provide-Capability: osgi.extender; osgi.extender="osgi.serviceloader.processor"; version:Version="1.0.0"; uses:="org.apache.aries.spifly"
+                            org.apache.aries.spifly.dynamic.bundle [41]
+                       Unresolved requirement: Require-Capability: osgi.serviceloader; osgi.serviceloader="org.slf4j.spi.SLF4JServiceProvider"; filter:="(osgi.serviceloader=org.slf4j.spi.SLF4JServiceProvider)"
+                         -> Provide-Capability: osgi.serviceloader; osgi.serviceloader="org.slf4j.spi.SLF4JServiceProvider"; register:="ch.qos.logback.classic.spi.LogbackServiceProvider"
+                            ch.qos.logback.classic [7]
+                              Unresolved requirement: Import-Package: jakarta.servlet; version="[5.0.0,6.0.0)"; resolution:="optional"
+                              Unresolved requirement: Import-Package: jakarta.servlet.http; version="[5.0.0,6.0.0)"; resolution:="optional"
+                              Unresolved requirement: Require-Capability: osgi.serviceloader; osgi.serviceloader="ch.qos.logback.classic.spi.Configurator"; filter:="(osgi.serviceloader=ch.qos.logback.classic.spi.Configurator)"; resolution:="optional"; cardinality:="multiple"
+                              Unresolved requirement: Import-Package: org.slf4j; version="[2.0.0,3.0.0)"
+                                -> Export-Package: org.slf4j; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="2.0.13"; uses:="org.slf4j.event,org.slf4j.helpers,org.slf4j.spi"
+                              Unresolved requirement: Require-Capability: osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.processor)(version>=1.0.0)(!(version>=2.0.0)))"; resolution:="optional"
+                                -> Provide-Capability: osgi.extender; osgi.extender="osgi.serviceloader.processor"; version:Version="1.0.0"; uses:="org.apache.aries.spifly"
+                              Unresolved requirement: Import-Package: org.slf4j.spi; version="[2.0.0,3.0.0)"
+                                -> Export-Package: org.slf4j.spi; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="2.0.13"; uses:="org.slf4j,org.slf4j.event,org.slf4j.helpers"
+                              Unresolved requirement: Import-Package: org.slf4j.helpers; version="[2.0.0,3.0.0)"
+                                -> Export-Package: org.slf4j.helpers; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="2.0.13"; uses:="org.slf4j,org.slf4j.event,org.slf4j.spi"
+                              Unresolved requirement: Require-Capability: osgi.extender; filter:="(&(osgi.extender=osgi.serviceloader.registrar)(version>=1.0.0)(!(version>=2.0.0)))"
+                                -> Provide-Capability: osgi.extender; osgi.extender="osgi.serviceloader.registrar"; version:Version="1.0.0"
+                              Unresolved requirement: Import-Package: org.slf4j.event; version="[2.0.0,3.0.0)"
+                                -> Export-Package: org.slf4j.event; bundle-symbolic-name="slf4j.api"; bundle-version="2.0.13"; version="2.0.13"; uses:="org.slf4j,org.slf4j.helpers"
+         Unresolved requirement: Import-Package: aQute.bnd.osgi; version="[5.5.0,8.0.0)"
+           -> Export-Package: aQute.bnd.osgi; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="7.0.0"; uses:="aQute.bnd.classfile,aQute.bnd.header,aQute.bnd.http,aQute.bnd.result,aQute.bnd.service,aQute.bnd.service.specifications,aQute.bnd.signatures,aQute.bnd.stream,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.resource,org.osgi.util.promise,org.slf4j"
+         Unresolved requirement: Import-Package: aQute.bnd.osgi.resource; version="[4.3.0,6.0.0)"
+           -> Export-Package: aQute.bnd.osgi.resource; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="5.0.0"; uses:="aQute.bnd.build.model,aQute.bnd.build.model.clauses,aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.service.resource,aQute.bnd.util.dto,aQute.bnd.version,aQute.service.reporter,org.osgi.framework,org.osgi.resource,org.osgi.service.repository"
+         Unresolved requirement: Import-Package: aQute.bnd.service; version="[4.7.0,5.0.0)"
+           -> Export-Package: aQute.bnd.service; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.8.0"; uses:="aQute.bnd.build,aQute.bnd.osgi,aQute.bnd.version,aQute.service.reporter,org.osgi.util.promise"
+         Unresolved requirement: Import-Package: aQute.bnd.build.model; version="[4.2.0,5.0.0)"
+           -> Export-Package: aQute.bnd.build.model; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="4.3.0"; uses:="aQute.bnd.build,aQute.bnd.build.model.clauses,aQute.bnd.build.model.conversions,aQute.bnd.header,aQute.bnd.help.instructions,aQute.bnd.osgi,aQute.bnd.properties,aQute.bnd.version,org.osgi.resource"
+         Unresolved requirement: Import-Package: aQute.bnd.osgi.repository; version="[3.0.0,4.0.0)"
+           -> Export-Package: aQute.bnd.osgi.repository; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="3.1.0"; uses:="aQute.bnd.header,aQute.bnd.osgi,aQute.bnd.osgi.resource,aQute.bnd.version,aQute.service.reporter,javax.xml.stream,org.osgi.resource,org.osgi.service.repository,org.osgi.util.promise"
+         Unresolved requirement: Import-Package: aQute.bnd.properties; version="[2.0.0,3.0.0)"
+           -> Export-Package: aQute.bnd.properties; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.0.0"
+         Unresolved requirement: Import-Package: aQute.bnd.header; version="[2.5.0,3.0.0)"
+           -> Export-Package: aQute.bnd.header; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.6.0"; uses:="aQute.bnd.stream,aQute.bnd.version,aQute.service.reporter"
+         Unresolved requirement: Import-Package: aQute.bnd.version; version="[2.2.0,3.0.0)"
+           -> Export-Package: aQute.bnd.version; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="2.3.0"; uses:="org.osgi.framework"
+         Unresolved requirement: Import-Package: aQute.service.reporter; version="[1.2.0,2.0.0)"
+           -> Export-Package: aQute.service.reporter; bundle-symbolic-name="biz.aQute.bndlib"; bundle-version="7.0.0.202310060912"; version="1.2.0"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.apache.aries.spifly.dynamic.bundle [osgi.identity; type="osgi.bundle"; version:Version="1.3.7"; osgi.identity="org.apache.aries.spifly.dynamic.bundle"] because it is exposed to package 'org.objectweb.asm' from resources org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"] and org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.6.0"; osgi.identity="org.objectweb.asm"] via two dependency chains.
+
+Chain 1:
+  org.apache.aries.spifly.dynamic.bundle [osgi.identity; type="osgi.bundle"; version:Version="1.3.7"; osgi.identity="org.apache.aries.spifly.dynamic.bundle"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(&(version>=9.6.0)(!(version>=10.0.0))))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.8.0"; osgi.identity="org.objectweb.asm"]
+
+Chain 2:
+  org.apache.aries.spifly.dynamic.bundle [osgi.identity; type="osgi.bundle"; version:Version="1.3.7"; osgi.identity="org.apache.aries.spifly.dynamic.bundle"]
+    import: (&(osgi.wiring.package=org.objectweb.asm.commons)(&(version>=9.6.0)(!(version>=10.0.0))))
+     |
+    export: osgi.wiring.package=org.objectweb.asm.commons; uses:=org.objectweb.asm
+  org.objectweb.asm.commons [osgi.identity; type="osgi.bundle"; version:Version="9.6.0"; osgi.identity="org.objectweb.asm.commons"]
+    import: (&(osgi.wiring.package=org.objectweb.asm)(version>=9.6.0))
+     |
+    export: osgi.wiring.package: org.objectweb.asm
+  org.objectweb.asm [osgi.identity; type="osgi.bundle"; version:Version="9.6.0"; osgi.identity="org.objectweb.asm"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.jface 2 0 2025-10-28 09:36:14.010
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2025-10-28 09:36:14.010
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.jdt.ui.navigate.open.type"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.lsp4e.symbolinworkspace"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
