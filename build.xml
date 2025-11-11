@@ -12,7 +12,7 @@
 
 	  <target name="generate">
 	    
-	    <cup srcfile="${base}/parser.cup"  destdir="${java}"
+	    <cup srcfile="${base}/parser.cup"  destdir="${java}" expect="200"
 	          parser="Parser"
 			  interface="true"
 	  	      locations="true"

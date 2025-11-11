@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.File;
 import java.io.FileInputStream;
 
-
 parser code {:
   protected Lexer lexer;
 :}
@@ -32,44 +31,151 @@ init with {:
 scan with {: return lexer.next_token(); :};
 
 /* Terminals (tokens returned by the scanner). */
-terminal SEMI, PLUS, MINUS, UMINUS, TIMES, DIVIDE;
+
+terminal SEMI, PLUS, MINUS, TIMES, DIVIDE, QCHAR;
 terminal LPAR, RPAR, LBRACE, RBRACE, LBRACK, RBRACK;
 terminal IF, ELSE, WHILE, RETURN, WRITE, READ, LENGTH;
-terminal GREATER, LESS, ASSIGN, EQUALEQUAL, NEQUAL, NOT;  
-terminal Integer NUMBER;        
+terminal GREATER, LESS, ASSIGN, NEQUAL, NOT, EQUAL, COMMA;  // Add new terminals here
 terminal INT;
 terminal CHAR;
 terminal String NAME;
-terminal Char QCHAR;
+
+terminal Integer    NUMBER;        // our scanner provides numbers as integers
 
 /* Non terminals */
-non terminal            expr_list;
-non terminal Integer    expr;      // used to store evaluated subexpressions
+non terminal program;
+non terminal declaration;
+non terminal fun_declaration;
+non terminal formal_pars;
+non terminal formal_par;
+non terminal block;
+non terminal var_declaration;
+non terminal var_declarations;
+non terminal type;
+non terminal statements;
+non terminal statement;
+non terminal lexp;
+non terminal exp;
+non terminal binop;
+non terminal unop;
+non terminal pars;
+non terminal var;
+non terminal formal_parameters;
+
 
 /* Precedences */
-precedence left PLUS, MINUS;
-precedence left TIMES, DIVIDE;
-precedence left GREATER, LESS;
-precedence left EQUALEQUAL, NEQUAL;
-precedence left UMINUS;
+precedence left EQUAL, NEQUAL;             // comparison operators
+precedence left GREATER, LESS;              // relational operators
+precedence left PLUS, MINUS;                // addition/subtraction
+precedence left TIMES, DIVIDE;              // multiplication/division
+precedence right NOT;                       // unary NOT
+ 
+precedence left ELSE;      
 
-
+start with program;
 
 /* The grammar rules */
-expr_list ::= expr_list expr:e SEMI         {: System.out.println(e); :}
-            | expr:e SEMI                   {: System.out.println(e); :}
-            ;
-            
-expr      ::= expr:e1 PLUS  expr:e2         {: RESULT = e1+e2;        :}
-             | expr:e1 MINUS expr:e2        {: RESULT = e1-e2;        :}
-             | expr:e1 TIMES expr:e2        {: RESULT = e1*e2;        :}
-              | expr:e1 DIVIDE expr:e2       {: RESULT = e1/e2;        :}
-             | expr:e1 GREATER expr:e2        {: RESULT = (e1 > e2) ? 1 : 0;:}
-			 | expr:e1 LESS expr:e2     {: RESULT = (e1 > e2) ? 1 : 0; :}
-             | MINUS expr:e                 {: RESULT = -e;           :} 
-              %prec UMINUS
-             | LPAR expr:e RPAR	         {: RESULT = e;           :}
-             | NUMBER:n	                     {: RESULT = n;           :}
+    program ::= declaration program
+			| declaration
+			;
+
+// declaration : fun_declaration | var_declaration
+declaration ::= fun_declaration
+			| var_declaration
+			;
+
+// fun_declaration : type NAME LPAR formal_pars RPAR block
+fun_declaration ::= type NAME LPAR formal_parameters RPAR block
+                  ;
+
+// formal_pars : formal_par [ COMMA formal_par ]* | // empty
+formal_pars ::=formal_pars COMMA formal_par
+              | formal_par
+              ;
+formal_parameters ::= formal_pars 
+                    | /*empty */
+                    ;
+
+// formal_par : type NAME
+formal_par ::= type NAME
              ;
 
-       
+// block : LBRACE var_declaration* statements RBRACE
+block ::= LBRACE var_declarations statements RBRACE
+        ;
+
+// var_declaration : type NAME SEMICOLON
+var_declaration ::= type NAME SEMI
+                  ;
+
+// var_declarations : zero or more variable declarations
+var_declarations ::= var_declarations var_declaration
+                   | /* empty */
+                   ;
+
+// type : INT | CHAR | type LBRACK exp RBRACK
+type ::= INT
+      |  CHAR
+      |  type LBRACK exp RBRACK  // array type
+      ;
+
+// statements : statement [ SEMICOLON statement]* | empty
+// Handles both separators and terminators
+statements ::= statements statement SEMI
+             | statements statement
+             | /* empty */
+             ;
+
+// statement : multiple alternatives as per PDF
+statement ::= IF LPAR exp RPAR statement
+           |  IF LPAR exp RPAR statement ELSE statement
+           |  WHILE LPAR exp RPAR statement
+           |  lexp ASSIGN exp
+           |  RETURN exp
+           |  NAME LPAR pars RPAR     // function call
+           |  block
+           |  WRITE exp
+           |  READ lexp
+           ;
+
+// lexp : var | lexp LBRACK exp RBRACK
+lexp ::= var
+      |  lexp LBRACK exp RBRACK  // array access
+      ;
+
+// exp : expanded with precedence to resolve conflicts
+exp ::= lexp
+     |  exp binop exp
+     |  unop exp
+     |  LPAR exp RPAR
+     |  NUMBER
+     |  NAME LPAR pars RPAR     // function call
+     |  QCHAR
+     |  LENGTH lexp             // size of an array
+     ;
+
+// binop : as per PDF specification
+binop ::= MINUS
+       |  PLUS
+       |  TIMES
+       |  DIVIDE
+       |  EQUAL
+       |  NEQUAL
+       |  GREATER
+       |  LESS
+       ;
+
+// unop : as per PDF specification
+unop ::= MINUS
+      |  NOT
+      ;
+
+// pars : exp [COMMA exp]* | empty
+pars ::= exp COMMA pars
+      |  exp
+      |  /* empty */
+      ;
+
+// var : NAME
+var ::= NAME
+      ;

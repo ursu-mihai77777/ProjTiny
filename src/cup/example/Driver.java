@@ -9,7 +9,11 @@ import java_cup.runtime.*;
 class Driver {
 
 	public static void main(String[] args) throws Exception {
-        ComplexSymbolFactory f = new ComplexSymbolFactory();
+		Parser parser = new Parser();
+	    parser.debug_parse();
+		//parser.parse();
+       
+		/*ComplexSymbolFactory f = new ComplexSymbolFactory();
         
         File file = new File("input.txt");
         FileInputStream fis = null;
@@ -29,6 +33,6 @@ class Driver {
         		else
         			System.out.println(s.toString());
         	}
-        }while(s.sym!=sym.EOF);
-	}
+        }while(s.sym!=sym.EOF); */
+	} 
 }

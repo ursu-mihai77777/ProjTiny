@@ -8,30 +8,31 @@ package cup.example;
 /** CUP generated interface containing symbol constants. */
 public interface sym {
   /* terminals */
-  public static final int TIMES = 6;
+  public static final int TIMES = 5;
   public static final int RBRACK = 13;
   public static final int READ = 19;
   public static final int ELSE = 15;
   public static final int PLUS = 3;
   public static final int INT = 28;
   public static final int RBRACE = 11;
-  public static final int QCHAR = 31;
+  public static final int EQUAL = 26;
+  public static final int QCHAR = 7;
   public static final int CHAR = 29;
   public static final int SEMI = 2;
   public static final int WHILE = 16;
-  public static final int NOT = 26;
+  public static final int NOT = 25;
   public static final int LBRACK = 12;
-  public static final int EQUALEQUAL = 24;
   public static final int RETURN = 17;
   public static final int NAME = 30;
   public static final int GREATER = 21;
   public static final int IF = 14;
   public static final int LBRACE = 10;
   public static final int WRITE = 18;
-  public static final int NUMBER = 27;
-  public static final int NEQUAL = 25;
+  public static final int COMMA = 27;
+  public static final int NUMBER = 31;
+  public static final int NEQUAL = 24;
   public static final int EOF = 0;
-  public static final int DIVIDE = 7;
+  public static final int DIVIDE = 6;
   public static final int LENGTH = 20;
   public static final int MINUS = 4;
   public static final int error = 1;
@@ -39,16 +40,15 @@ public interface sym {
   public static final int RPAR = 9;
   public static final int LPAR = 8;
   public static final int LESS = 22;
-  public static final int UMINUS = 5;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "SEMI",
   "PLUS",
   "MINUS",
-  "UMINUS",
   "TIMES",
   "DIVIDE",
+  "QCHAR",
   "LPAR",
   "RPAR",
   "LBRACE",
@@ -65,14 +65,14 @@ public interface sym {
   "GREATER",
   "LESS",
   "ASSIGN",
-  "EQUALEQUAL",
   "NEQUAL",
   "NOT",
-  "NUMBER",
+  "EQUAL",
+  "COMMA",
   "INT",
   "CHAR",
   "NAME",
-  "QCHAR"
+  "NUMBER"
   };
 }
 

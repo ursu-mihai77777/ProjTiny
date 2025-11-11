@@ -81,14 +81,16 @@ ident = ([:jletter:]) ([:jletterdigit:] | [:jletter:] | "_" )*
 <YYINITIAL> {
 
   {Whitespace} {                              }
+  {EndOfLineComment} {}
   ";"          { return symbolFactory.newSymbol("SEMI", SEMI); }
+  ","          { return symbolFactory.newSymbol("COMMA", COMMA); }
   
   "+"          { return symbolFactory.newSymbol("PLUS", PLUS); }
   "-"          { return symbolFactory.newSymbol("MINUS", MINUS); }
   "*"          { return symbolFactory.newSymbol("TIMES", TIMES); }
   "/"          { return symbolFactory.newSymbol("DIVIDE", DIVIDE); }
   
-  "n"          { return symbolFactory.newSymbol("UMINUS", UMINUS); }
+  
   "("          { return symbolFactory.newSymbol("LPAR", LPAR); }
   ")"          { return symbolFactory.newSymbol("RPAR", RPAR); }
   
@@ -101,7 +103,7 @@ ident = ([:jletter:]) ([:jletterdigit:] | [:jletter:] | "_" )*
   "="          { return symbolFactory.newSymbol("ASSIGN", ASSIGN); }
   "!"          { return symbolFactory.newSymbol("NOT", NOT); }
   
-  "=="         { return symbolFactory.newSymbol("EQUALEQUAL", EQUALEQUAL); } 
+  "=="         { return symbolFactory.newSymbol("EQUAL", EQUAL); } 
   "!="         { return symbolFactory.newSymbol("NEQUAL", NEQUAL); } 
   ">"          { return symbolFactory.newSymbol("GREATER", GREATER); }
   "<"          { return symbolFactory.newSymbol("LESS", LESS); }
