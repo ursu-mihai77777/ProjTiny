@@ -1,38 +1,26 @@
 package cup.example;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import java_cup.runtime.*;
 
 class Driver {
 
 	public static void main(String[] args) throws Exception {
 		Parser parser = new Parser();
-	    parser.debug_parse();
-		//parser.parse();
-       
-		/*ComplexSymbolFactory f = new ComplexSymbolFactory();
-        
-        File file = new File("input.txt");
-        FileInputStream fis = null;
-        try {
-          fis = new FileInputStream(file);
-        } catch (IOException e) {
-          e.printStackTrace();
-        } 
-        Lexer lexer = new Lexer(f,fis);
-        Symbol s= null ;
-        do {
-        	s=lexer.next_token();
-        	if(s.sym!= sym.EOF)
-        	{
-        		if(s.value!=null)
-        			System.out.println(s.toString()+"; Value: "+s.value);
-        		else
-        			System.out.println(s.toString());
-        	}
-        }while(s.sym!=sym.EOF); */
-	} 
+		parser.parse();
+		TreeNode root = parser.getParseTreeRoot();
+		if (root != null)
+			root.printNode();
+		/*TreeNode root = new TreeNode("Root");
+		root.addChild(new TreeNode("Root->Child1"));
+		root.addChild(new TreeNode("Root->Child2"));
+		root.addChild(new TreeNode("Root->Child3"));
+		
+		TreeNode child4 = new TreeNode("Root->Child4");
+		child4.addChild(new TreeNode("Root->Child4->Child1"));
+		child4.addChild(new TreeNode("Root->Child4->Child2"));
+		child4.addChild(new TreeNode("Root->Child4->Child3"));
+		root.addChild(child4);
+		
+		root.printNode();*/
+	}
+	
 }

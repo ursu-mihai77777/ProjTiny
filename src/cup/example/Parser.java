@@ -5,6 +5,7 @@
 
 package cup.example;
 
+import cup.example.TreeNode;
 import java_cup.runtime.*;
 import cup.example.Lexer;
 import java.io.IOException;
@@ -97,113 +98,114 @@ public class Parser extends java_cup.runtime.lr_parser {
     "\015\uffe3\016\uffe3\017\uffe3\020\uffe3\021\uffe3\022\uffe3\023" +
     "\uffe3\024\uffe3\025\uffe3\027\uffe3\030\uffe3\031\uffe3\032\uffe3" +
     "\034\uffe3\035\uffe3\040\uffe3\001\002\000\010\012\052\016" +
-    "\uffcc\031\uffcc\001\002\000\022\006\053\011\064\012\061" +
-    "\013\uffcd\026\054\033\062\040\065\041\057\001\002\000" +
-    "\020\006\uffd1\011\uffd1\012\uffd1\026\uffd1\033\uffd1\040\uffd1" +
-    "\041\uffd1\001\002\000\004\040\115\001\002\000\056\004" +
-    "\uffe1\005\uffe1\006\uffe1\007\uffe1\010\uffe1\013\uffe1\014\uffe1" +
-    "\015\uffe1\016\111\017\uffe1\020\uffe1\021\uffe1\022\uffe1\023" +
-    "\uffe1\024\uffe1\025\uffe1\027\uffe1\030\uffe1\032\uffe1\034\uffe1" +
-    "\035\uffe1\040\uffe1\001\002\000\004\013\110\001\002\000" +
-    "\054\004\uffdd\005\uffdd\006\uffdd\007\uffdd\010\uffdd\013\uffdd" +
-    "\014\uffdd\015\uffdd\017\uffdd\020\uffdd\021\uffdd\022\uffdd\023" +
-    "\uffdd\024\uffdd\025\uffdd\027\uffdd\030\uffdd\032\uffdd\034\uffdd" +
-    "\035\uffdd\040\uffdd\001\002\000\026\005\077\006\072\007" +
-    "\102\010\073\013\uffce\027\074\030\101\032\075\034\076" +
-    "\035\106\001\002\000\020\006\053\011\064\012\061\026" +
-    "\054\033\062\040\065\041\057\001\002\000\020\006\uffd0" +
-    "\011\uffd0\012\uffd0\026\uffd0\033\uffd0\040\uffd0\041\uffd0\001" +
-    "\002\000\020\006\053\011\064\012\061\026\054\033\062" +
-    "\040\065\041\057\001\002\000\054\004\uffdb\005\uffdb\006" +
-    "\uffdb\007\uffdb\010\uffdb\013\uffdb\014\uffdb\015\uffdb\017\uffdb" +
-    "\020\uffdb\021\uffdb\022\uffdb\023\uffdb\024\uffdb\025\uffdb\027" +
-    "\uffdb\030\uffdb\032\uffdb\034\uffdb\035\uffdb\040\uffdb\001\002" +
-    "\000\060\004\uffcc\005\uffcc\006\uffcc\007\uffcc\010\uffcc\012" +
-    "\066\013\uffcc\014\uffcc\015\uffcc\016\uffcc\017\uffcc\020\uffcc" +
-    "\021\uffcc\022\uffcc\023\uffcc\024\uffcc\025\uffcc\027\uffcc\030" +
-    "\uffcc\032\uffcc\034\uffcc\035\uffcc\040\uffcc\001\002\000\022" +
-    "\006\053\011\064\012\061\013\uffcd\026\054\033\062\040" +
-    "\065\041\057\001\002\000\004\013\070\001\002\000\054" +
+    "\uffcc\031\uffcc\001\002\000\024\006\053\011\064\012\061" +
+    "\013\uffcd\026\054\033\062\035\uffcd\040\065\041\057\001" +
+    "\002\000\020\006\uffd1\011\uffd1\012\uffd1\026\uffd1\033\uffd1" +
+    "\040\uffd1\041\uffd1\001\002\000\004\040\115\001\002\000" +
+    "\056\004\uffe1\005\uffe1\006\uffe1\007\uffe1\010\uffe1\013\uffe1" +
+    "\014\uffe1\015\uffe1\016\111\017\uffe1\020\uffe1\021\uffe1\022" +
+    "\uffe1\023\uffe1\024\uffe1\025\uffe1\027\uffe1\030\uffe1\032\uffe1" +
+    "\034\uffe1\035\uffe1\040\uffe1\001\002\000\006\013\110\035" +
+    "\070\001\002\000\054\004\uffdd\005\uffdd\006\uffdd\007\uffdd" +
+    "\010\uffdd\013\uffdd\014\uffdd\015\uffdd\017\uffdd\020\uffdd\021" +
+    "\uffdd\022\uffdd\023\uffdd\024\uffdd\025\uffdd\027\uffdd\030\uffdd" +
+    "\032\uffdd\034\uffdd\035\uffdd\040\uffdd\001\002\000\026\005" +
+    "\100\006\073\007\103\010\074\013\uffce\027\075\030\102" +
+    "\032\076\034\077\035\uffce\001\002\000\020\006\053\011" +
+    "\064\012\061\026\054\033\062\040\065\041\057\001\002" +
+    "\000\020\006\uffd0\011\uffd0\012\uffd0\026\uffd0\033\uffd0\040" +
+    "\uffd0\041\uffd0\001\002\000\020\006\053\011\064\012\061" +
+    "\026\054\033\062\040\065\041\057\001\002\000\054\004" +
+    "\uffdb\005\uffdb\006\uffdb\007\uffdb\010\uffdb\013\uffdb\014\uffdb" +
+    "\015\uffdb\017\uffdb\020\uffdb\021\uffdb\022\uffdb\023\uffdb\024" +
+    "\uffdb\025\uffdb\027\uffdb\030\uffdb\032\uffdb\034\uffdb\035\uffdb" +
+    "\040\uffdb\001\002\000\060\004\uffcc\005\uffcc\006\uffcc\007" +
+    "\uffcc\010\uffcc\012\066\013\uffcc\014\uffcc\015\uffcc\016\uffcc" +
+    "\017\uffcc\020\uffcc\021\uffcc\022\uffcc\023\uffcc\024\uffcc\025" +
+    "\uffcc\027\uffcc\030\uffcc\032\uffcc\034\uffcc\035\uffcc\040\uffcc" +
+    "\001\002\000\024\006\053\011\064\012\061\013\uffcd\026" +
+    "\054\033\062\035\uffcd\040\065\041\057\001\002\000\006" +
+    "\013\071\035\070\001\002\000\020\006\053\011\064\012" +
+    "\061\026\054\033\062\040\065\041\057\001\002\000\054" +
     "\004\uffdc\005\uffdc\006\uffdc\007\uffdc\010\uffdc\013\uffdc\014" +
     "\uffdc\015\uffdc\017\uffdc\020\uffdc\021\uffdc\022\uffdc\023\uffdc" +
     "\024\uffdc\025\uffdc\027\uffdc\030\uffdc\032\uffdc\034\uffdc\035" +
-    "\uffdc\040\uffdc\001\002\000\054\004\uffdf\005\077\006\072" +
-    "\007\102\010\073\013\uffdf\014\uffdf\015\uffdf\017\uffdf\020" +
-    "\uffdf\021\uffdf\022\uffdf\023\uffdf\024\uffdf\025\uffdf\027\074" +
-    "\030\101\032\075\034\076\035\uffdf\040\uffdf\001\002\000" +
-    "\020\006\uffd9\011\uffd9\012\uffd9\026\uffd9\033\uffd9\040\uffd9" +
-    "\041\uffd9\001\002\000\020\006\uffd6\011\uffd6\012\uffd6\026" +
-    "\uffd6\033\uffd6\040\uffd6\041\uffd6\001\002\000\020\006\uffd3" +
-    "\011\uffd3\012\uffd3\026\uffd3\033\uffd3\040\uffd3\041\uffd3\001" +
-    "\002\000\020\006\uffd4\011\uffd4\012\uffd4\026\uffd4\033\uffd4" +
-    "\040\uffd4\041\uffd4\001\002\000\020\006\uffd5\011\uffd5\012" +
-    "\uffd5\026\uffd5\033\uffd5\040\uffd5\041\uffd5\001\002\000\020" +
-    "\006\uffd8\011\uffd8\012\uffd8\026\uffd8\033\uffd8\040\uffd8\041" +
-    "\uffd8\001\002\000\020\006\053\011\064\012\061\026\054" +
-    "\033\062\040\065\041\057\001\002\000\020\006\uffd2\011" +
-    "\uffd2\012\uffd2\026\uffd2\033\uffd2\040\uffd2\041\uffd2\001\002" +
-    "\000\020\006\uffd7\011\uffd7\012\uffd7\026\uffd7\033\uffd7\040" +
-    "\uffd7\041\uffd7\001\002\000\054\004\uffe0\005\077\006\072" +
-    "\007\102\010\073\013\uffe0\014\uffe0\015\uffe0\017\uffe0\020" +
-    "\uffe0\021\uffe0\022\uffe0\023\uffe0\024\uffe0\025\uffe0\027\074" +
-    "\030\101\032\075\034\076\035\uffe0\040\uffe0\001\002\000" +
-    "\024\005\077\006\072\007\102\010\073\013\105\027\074" +
-    "\030\101\032\075\034\076\001\002\000\054\004\uffde\005" +
-    "\uffde\006\uffde\007\uffde\010\uffde\013\uffde\014\uffde\015\uffde" +
-    "\017\uffde\020\uffde\021\uffde\022\uffde\023\uffde\024\uffde\025" +
-    "\uffde\027\uffde\030\uffde\032\uffde\034\uffde\035\uffde\040\uffde" +
-    "\001\002\000\022\006\053\011\064\012\061\013\uffcd\026" +
-    "\054\033\062\040\065\041\057\001\002\000\004\013\uffcf" +
-    "\001\002\000\026\004\uffe7\014\uffe7\015\uffe7\020\uffe7\021" +
-    "\uffe7\022\uffe7\023\uffe7\024\uffe7\025\uffe7\040\uffe7\001\002" +
-    "\000\020\006\053\011\064\012\061\026\054\033\062\040" +
-    "\065\041\057\001\002\000\024\005\077\006\072\007\102" +
-    "\010\073\017\113\027\074\030\101\032\075\034\076\001" +
-    "\002\000\060\004\uffe2\005\uffe2\006\uffe2\007\uffe2\010\uffe2" +
-    "\013\uffe2\014\uffe2\015\uffe2\016\uffe2\017\uffe2\020\uffe2\021" +
-    "\uffe2\022\uffe2\023\uffe2\024\uffe2\025\uffe2\027\uffe2\030\uffe2" +
-    "\031\uffe2\032\uffe2\034\uffe2\035\uffe2\040\uffe2\001\002\000" +
-    "\056\004\uffda\005\uffda\006\uffda\007\uffda\010\uffda\013\uffda" +
-    "\014\uffda\015\uffda\016\111\017\uffda\020\uffda\021\uffda\022" +
-    "\uffda\023\uffda\024\uffda\025\uffda\027\uffda\030\uffda\032\uffda" +
-    "\034\uffda\035\uffda\040\uffda\001\002\000\056\004\uffcc\005" +
-    "\uffcc\006\uffcc\007\uffcc\010\uffcc\013\uffcc\014\uffcc\015\uffcc" +
-    "\016\uffcc\017\uffcc\020\uffcc\021\uffcc\022\uffcc\023\uffcc\024" +
-    "\uffcc\025\uffcc\027\uffcc\030\uffcc\032\uffcc\034\uffcc\035\uffcc" +
-    "\040\uffcc\001\002\000\046\004\uffe8\005\077\006\072\007" +
-    "\102\010\073\014\uffe8\015\uffe8\020\uffe8\021\uffe8\022\uffe8" +
-    "\023\uffe8\024\uffe8\025\uffe8\027\074\030\101\032\075\034" +
-    "\076\040\uffe8\001\002\000\046\004\uffe5\005\077\006\072" +
-    "\007\102\010\073\014\uffe5\015\uffe5\020\uffe5\021\uffe5\022" +
-    "\uffe5\023\uffe5\024\uffe5\025\uffe5\027\074\030\101\032\075" +
-    "\034\076\040\uffe5\001\002\000\022\014\uffef\015\uffef\020" +
-    "\uffef\022\uffef\023\uffef\024\uffef\025\uffef\040\uffef\001\002" +
-    "\000\020\006\053\011\064\012\061\026\054\033\062\040" +
-    "\065\041\057\001\002\000\024\005\077\006\072\007\102" +
-    "\010\073\013\123\027\074\030\101\032\075\034\076\001" +
-    "\002\000\020\014\030\020\043\022\040\023\046\024\045" +
-    "\025\037\040\051\001\002\000\026\004\uffec\014\uffec\015" +
-    "\uffec\020\uffec\021\125\022\uffec\023\uffec\024\uffec\025\uffec" +
-    "\040\uffec\001\002\000\020\014\030\020\043\022\040\023" +
-    "\046\024\045\025\037\040\051\001\002\000\026\004\uffeb" +
-    "\014\uffeb\015\uffeb\020\uffeb\021\uffeb\022\uffeb\023\uffeb\024" +
-    "\uffeb\025\uffeb\040\uffeb\001\002\000\020\006\053\011\064" +
+    "\uffdc\040\uffdc\001\002\000\026\005\100\006\073\007\103" +
+    "\010\074\013\uffcf\027\075\030\102\032\076\034\077\035" +
+    "\uffcf\001\002\000\020\006\uffd9\011\uffd9\012\uffd9\026\uffd9" +
+    "\033\uffd9\040\uffd9\041\uffd9\001\002\000\020\006\uffd6\011" +
+    "\uffd6\012\uffd6\026\uffd6\033\uffd6\040\uffd6\041\uffd6\001\002" +
+    "\000\020\006\uffd3\011\uffd3\012\uffd3\026\uffd3\033\uffd3\040" +
+    "\uffd3\041\uffd3\001\002\000\020\006\uffd4\011\uffd4\012\uffd4" +
+    "\026\uffd4\033\uffd4\040\uffd4\041\uffd4\001\002\000\020\006" +
+    "\uffd5\011\uffd5\012\uffd5\026\uffd5\033\uffd5\040\uffd5\041\uffd5" +
+    "\001\002\000\020\006\uffd8\011\uffd8\012\uffd8\026\uffd8\033" +
+    "\uffd8\040\uffd8\041\uffd8\001\002\000\020\006\053\011\064" +
     "\012\061\026\054\033\062\040\065\041\057\001\002\000" +
-    "\046\004\uffe9\005\077\006\072\007\102\010\073\014\uffe9" +
-    "\015\uffe9\020\uffe9\021\uffe9\022\uffe9\023\uffe9\024\uffe9\025" +
-    "\uffe9\027\074\030\101\032\075\034\076\040\uffe9\001\002" +
-    "\000\020\006\053\011\064\012\061\026\054\033\062\040" +
-    "\065\041\057\001\002\000\024\005\077\006\072\007\102" +
-    "\010\073\013\133\027\074\030\101\032\075\034\076\001" +
-    "\002\000\020\014\030\020\043\022\040\023\046\024\045" +
-    "\025\037\040\051\001\002\000\026\004\uffea\014\uffea\015" +
-    "\uffea\020\uffea\021\uffea\022\uffea\023\uffea\024\uffea\025\uffea" +
-    "\040\uffea\001\002\000\030\004\uffe4\014\uffe4\015\uffe4\016" +
-    "\111\020\uffe4\021\uffe4\022\uffe4\023\uffe4\024\uffe4\025\uffe4" +
-    "\040\uffe4\001\002\000\024\005\077\006\072\007\102\010" +
-    "\073\017\137\027\074\030\101\032\075\034\076\001\002" +
-    "\000\006\016\ufff0\040\ufff0\001\002\000\004\002\001\001" +
-    "\002" });
+    "\020\006\uffd2\011\uffd2\012\uffd2\026\uffd2\033\uffd2\040\uffd2" +
+    "\041\uffd2\001\002\000\020\006\uffd7\011\uffd7\012\uffd7\026" +
+    "\uffd7\033\uffd7\040\uffd7\041\uffd7\001\002\000\054\004\uffe0" +
+    "\005\100\006\073\007\103\010\074\013\uffe0\014\uffe0\015" +
+    "\uffe0\017\uffe0\020\uffe0\021\uffe0\022\uffe0\023\uffe0\024\uffe0" +
+    "\025\uffe0\027\075\030\102\032\076\034\077\035\uffe0\040" +
+    "\uffe0\001\002\000\054\004\uffdf\005\100\006\073\007\103" +
+    "\010\074\013\uffdf\014\uffdf\015\uffdf\017\uffdf\020\uffdf\021" +
+    "\uffdf\022\uffdf\023\uffdf\024\uffdf\025\uffdf\027\075\030\102" +
+    "\032\076\034\077\035\uffdf\040\uffdf\001\002\000\024\005" +
+    "\100\006\073\007\103\010\074\013\107\027\075\030\102" +
+    "\032\076\034\077\001\002\000\054\004\uffde\005\uffde\006" +
+    "\uffde\007\uffde\010\uffde\013\uffde\014\uffde\015\uffde\017\uffde" +
+    "\020\uffde\021\uffde\022\uffde\023\uffde\024\uffde\025\uffde\027" +
+    "\uffde\030\uffde\032\uffde\034\uffde\035\uffde\040\uffde\001\002" +
+    "\000\026\004\uffe7\014\uffe7\015\uffe7\020\uffe7\021\uffe7\022" +
+    "\uffe7\023\uffe7\024\uffe7\025\uffe7\040\uffe7\001\002\000\020" +
+    "\006\053\011\064\012\061\026\054\033\062\040\065\041" +
+    "\057\001\002\000\024\005\100\006\073\007\103\010\074" +
+    "\017\113\027\075\030\102\032\076\034\077\001\002\000" +
+    "\060\004\uffe2\005\uffe2\006\uffe2\007\uffe2\010\uffe2\013\uffe2" +
+    "\014\uffe2\015\uffe2\016\uffe2\017\uffe2\020\uffe2\021\uffe2\022" +
+    "\uffe2\023\uffe2\024\uffe2\025\uffe2\027\uffe2\030\uffe2\031\uffe2" +
+    "\032\uffe2\034\uffe2\035\uffe2\040\uffe2\001\002\000\056\004" +
+    "\uffda\005\uffda\006\uffda\007\uffda\010\uffda\013\uffda\014\uffda" +
+    "\015\uffda\016\111\017\uffda\020\uffda\021\uffda\022\uffda\023" +
+    "\uffda\024\uffda\025\uffda\027\uffda\030\uffda\032\uffda\034\uffda" +
+    "\035\uffda\040\uffda\001\002\000\056\004\uffcc\005\uffcc\006" +
+    "\uffcc\007\uffcc\010\uffcc\013\uffcc\014\uffcc\015\uffcc\016\uffcc" +
+    "\017\uffcc\020\uffcc\021\uffcc\022\uffcc\023\uffcc\024\uffcc\025" +
+    "\uffcc\027\uffcc\030\uffcc\032\uffcc\034\uffcc\035\uffcc\040\uffcc" +
+    "\001\002\000\046\004\uffe8\005\100\006\073\007\103\010" +
+    "\074\014\uffe8\015\uffe8\020\uffe8\021\uffe8\022\uffe8\023\uffe8" +
+    "\024\uffe8\025\uffe8\027\075\030\102\032\076\034\077\040" +
+    "\uffe8\001\002\000\046\004\uffe5\005\100\006\073\007\103" +
+    "\010\074\014\uffe5\015\uffe5\020\uffe5\021\uffe5\022\uffe5\023" +
+    "\uffe5\024\uffe5\025\uffe5\027\075\030\102\032\076\034\077" +
+    "\040\uffe5\001\002\000\022\014\uffef\015\uffef\020\uffef\022" +
+    "\uffef\023\uffef\024\uffef\025\uffef\040\uffef\001\002\000\020" +
+    "\006\053\011\064\012\061\026\054\033\062\040\065\041" +
+    "\057\001\002\000\024\005\100\006\073\007\103\010\074" +
+    "\013\123\027\075\030\102\032\076\034\077\001\002\000" +
+    "\020\014\030\020\043\022\040\023\046\024\045\025\037" +
+    "\040\051\001\002\000\026\004\uffec\014\uffec\015\uffec\020" +
+    "\uffec\021\125\022\uffec\023\uffec\024\uffec\025\uffec\040\uffec" +
+    "\001\002\000\020\014\030\020\043\022\040\023\046\024" +
+    "\045\025\037\040\051\001\002\000\026\004\uffeb\014\uffeb" +
+    "\015\uffeb\020\uffeb\021\uffeb\022\uffeb\023\uffeb\024\uffeb\025" +
+    "\uffeb\040\uffeb\001\002\000\020\006\053\011\064\012\061" +
+    "\026\054\033\062\040\065\041\057\001\002\000\046\004" +
+    "\uffe9\005\100\006\073\007\103\010\074\014\uffe9\015\uffe9" +
+    "\020\uffe9\021\uffe9\022\uffe9\023\uffe9\024\uffe9\025\uffe9\027" +
+    "\075\030\102\032\076\034\077\040\uffe9\001\002\000\020" +
+    "\006\053\011\064\012\061\026\054\033\062\040\065\041" +
+    "\057\001\002\000\024\005\100\006\073\007\103\010\074" +
+    "\013\133\027\075\030\102\032\076\034\077\001\002\000" +
+    "\020\014\030\020\043\022\040\023\046\024\045\025\037" +
+    "\040\051\001\002\000\026\004\uffea\014\uffea\015\uffea\020" +
+    "\uffea\021\uffea\022\uffea\023\uffea\024\uffea\025\uffea\040\uffea" +
+    "\001\002\000\030\004\uffe4\014\uffe4\015\uffe4\016\111\020" +
+    "\uffe4\021\uffe4\022\uffe4\023\uffe4\024\uffe4\025\uffe4\040\uffe4" +
+    "\001\002\000\024\005\100\006\073\007\103\010\074\017" +
+    "\137\027\075\030\102\032\076\034\077\001\002\000\006" +
+    "\016\ufff0\040\ufff0\001\002\000\004\002\001\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -232,30 +234,30 @@ public class Parser extends java_cup.runtime.lr_parser {
     "\001\001\000\014\015\054\016\057\020\062\021\055\022" +
     "\047\001\001\000\002\001\001\000\006\015\113\022\047" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\004\017\077\001\001\000\012\015\054\016\103" +
+    "\001\000\004\017\100\001\001\000\012\015\054\016\105" +
     "\020\062\022\047\001\001\000\002\001\001\000\012\015" +
-    "\054\016\070\020\062\022\047\001\001\000\002\001\001" +
+    "\054\016\104\020\062\022\047\001\001\000\002\001\001" +
     "\000\002\001\001\000\014\015\054\016\057\020\062\021" +
-    "\066\022\047\001\001\000\002\001\001\000\002\001\001" +
-    "\000\004\017\077\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\012\015\054\016\102\020\062\022" +
-    "\047\001\001\000\002\001\001\000\002\001\001\000\004" +
-    "\017\077\001\001\000\004\017\077\001\001\000\002\001" +
-    "\001\000\014\015\054\016\057\020\062\021\106\022\047" +
+    "\066\022\047\001\001\000\002\001\001\000\012\015\054" +
+    "\016\071\020\062\022\047\001\001\000\002\001\001\000" +
+    "\004\017\100\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\012\015\054\016\103\020\062\022\047" +
+    "\001\001\000\002\001\001\000\002\001\001\000\004\017" +
+    "\100\001\001\000\004\017\100\001\001\000\004\017\100" +
     "\001\001\000\002\001\001\000\002\001\001\000\012\015" +
-    "\054\016\111\020\062\022\047\001\001\000\004\017\077" +
+    "\054\016\111\020\062\022\047\001\001\000\004\017\100" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\004\017\077\001\001\000\004\017\077\001\001" +
+    "\001\000\004\017\100\001\001\000\004\017\100\001\001" +
     "\000\002\001\001\000\012\015\054\016\121\020\062\022" +
-    "\047\001\001\000\004\017\077\001\001\000\012\007\041" +
+    "\047\001\001\000\004\017\100\001\001\000\012\007\041" +
     "\014\123\015\040\022\047\001\001\000\002\001\001\000" +
     "\012\007\041\014\125\015\040\022\047\001\001\000\002" +
     "\001\001\000\012\015\054\016\127\020\062\022\047\001" +
-    "\001\000\004\017\077\001\001\000\012\015\054\016\131" +
-    "\020\062\022\047\001\001\000\004\017\077\001\001\000" +
+    "\001\000\004\017\100\001\001\000\012\015\054\016\131" +
+    "\020\062\022\047\001\001\000\004\017\100\001\001\000" +
     "\012\007\041\014\133\015\040\022\047\001\001\000\002" +
-    "\001\001\000\002\001\001\000\004\017\077\001\001\000" +
+    "\001\001\000\002\001\001\000\004\017\100\001\001\000" +
     "\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
@@ -323,6 +325,11 @@ public class Parser extends java_cup.runtime.lr_parser {
 //@@CUPDBG0
 
   protected Lexer lexer;
+  protected TreeNode parseTreeRoot;
+  public TreeNode getParseTreeRoot()
+  {
+	return parseTreeRoot;
+  }
 
 
 /** Cup generated class to encapsulate user supplied action code.*/
@@ -355,7 +362,7 @@ class CUP$Parser$actions {
               Object RESULT =null;
 		Location start_valxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
 		Location start_valxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
-		Object start_val = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		TreeNode start_val = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		RESULT = start_val;
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("$START",0, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
@@ -366,8 +373,15 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 1: // program ::= declaration program 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location declxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location declxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode decl = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		Location progxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location progxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode prog = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG3
+prog.addChild(decl); RESULT = prog; 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("program",0, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -375,8 +389,16 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 2: // program ::= declaration 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location declxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location declxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode decl = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG4
 
+			                      parseTreeRoot = new TreeNode("Program");
+			                      parseTreeRoot.addChild(decl);
+			                      RESULT = parseTreeRoot;
+			                     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("program",0, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -384,8 +406,15 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 3: // declaration ::= fun_declaration 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location fdxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location fdxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode fd = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG5
+ TreeNode result = new TreeNode("Declaration");
+                                      result.addChild(fd);
+                                      RESULT=result;
+                                      
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("declaration",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -393,8 +422,15 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 4: // declaration ::= var_declaration 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location vdxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location vdxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode vd = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG6
+ TreeNode result = new TreeNode("Declaration");
+			                        result.addChild(vd);
+			                        RESULT=result;
+			                        
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("declaration",1, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -402,8 +438,27 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 5: // fun_declaration ::= type NAME LPAR formal_parameters RPAR block 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location txleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).xleft;
+		Location txright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).xright;
+		TreeNode t = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-5)).value;
+		Location nxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).xleft;
+		Location nxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).xright;
+		String n = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-4)).value;
+		Location fpxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location fpxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode fp = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location bxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location bxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode b = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG7
+ 
+                                                                           TreeNode result = new TreeNode("Function" + n);
+                                                                           result.addChild(t);
+                                                                           result.addChild(fp);
+                                                                           result.addChild(b);
+                                                                           RESULT=result;
+                                                                           
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("fun_declaration",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -411,8 +466,16 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 6: // formal_pars ::= formal_pars COMMA formal_par 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location fpsxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location fpsxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode fps = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location fpxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location fpxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode fp = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG8
+ fps.addChild(fp);
+                                                       
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("formal_pars",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -420,8 +483,16 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 7: // formal_pars ::= formal_par 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location fpxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location fpxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode fp = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG9
+ 
+                                  TreeNode params= new TreeNode("ParamsList");
+                                  params.addChild(fp);
+                                  RESULT=params; 
+                                  
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("formal_pars",3, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -429,8 +500,15 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 8: // formal_parameters ::= formal_pars 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location fpsxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location fpsxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode fps = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG10
+ TreeNode params = new TreeNode("ParamsList");
+                                        params.addChild(fps);
+                                        RESULT = params;
+                                        
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("formal_parameters",17, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -438,8 +516,11 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 9: // formal_parameters ::= 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG11
+ TreeNode result = new TreeNode ("Formal Parameters");
+                                      RESULT = result;
+                                      
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("formal_parameters",17, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -447,8 +528,18 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 10: // formal_par ::= type NAME 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location txleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location txright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode t = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		Location nxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location nxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		String n = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG12
+ TreeNode result = new TreeNode("ParamsList " + n);
+                                 result.addChild(t);
+                                 RESULT= result;
+                                 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("formal_par",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -456,8 +547,20 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 11: // block ::= LBRACE var_declarations statements RBRACE 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location vdsxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location vdsxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode vds = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location stmtxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location stmtxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode stmt = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		//@@CUPDBG13
 
+                                                              TreeNode result = new TreeNode("Block");
+                                                              result.addChild(vds);
+                                                              result.addChild(stmt);
+                                                              RESULT=result;
+                                                              
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("block",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -465,8 +568,19 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 12: // var_declaration ::= type NAME SEMI 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location txleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location txright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode t = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location nxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location nxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		String n = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		//@@CUPDBG14
 
+                                        TreeNode result = new TreeNode("Declaration " + n);
+                                        result.addChild(t);
+                                        RESULT=result;
+                                        
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("var_declaration",6, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -474,8 +588,18 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 13: // var_declarations ::= var_declarations var_declaration 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location vdsxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location vdsxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode vds = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		Location vdxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location vdxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode vd = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG15
 
+                                                               vds.addChild(vd);
+                                                               RESULT=vds;
+                                                               
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("var_declarations",7, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -483,8 +607,12 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 14: // var_declarations ::= 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		//@@CUPDBG16
 
+                                                                TreeNode result = new TreeNode("Var Declaration");
+                                                                RESULT=result;
+                                                                
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("var_declarations",7, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -492,8 +620,11 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 15: // type ::= INT 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG17
+ RESULT = new TreeNode("TYPE");
+                RESULT.addChild(new TreeNode("INT"));
+                
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -501,8 +632,11 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 16: // type ::= CHAR 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG18
+ RESULT = new TreeNode("TYPE");
+               RESULT.addChild( new TreeNode("CHAR"));
+               
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -510,8 +644,19 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 17: // type ::= type LBRACK exp RBRACK 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location txleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).xleft;
+		Location txright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).xright;
+		TreeNode t = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		//@@CUPDBG19
+TreeNode result = new TreeNode("TYPE");
+                                     result.addChild(t);
+                                     result.addChild(e);
+                                     RESULT=result;
+                                     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -519,8 +664,18 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 18: // statements ::= statements statement SEMI 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location stmtsxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location stmtsxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode stmts = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location stmtxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location stmtxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode stmt = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		//@@CUPDBG20
 
+                                            stmts.addChild(stmt);
+                                            RESULT = stmts;
+                                            
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statements",9, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -528,8 +683,18 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 19: // statements ::= statements statement 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location stmtsxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location stmtsxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode stmts = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		Location stmtxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location stmtxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode stmt = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG21
 
+                                               stmts.addChild(stmt);
+                                               RESULT=stmts;
+                                              
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statements",9, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -537,8 +702,12 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 20: // statements ::= 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		//@@CUPDBG22
 
+                                                                TreeNode result = new TreeNode("Statement Declaration");
+                                                                RESULT=result;
+                                                                
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statements",9, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -546,8 +715,20 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 21: // statement ::= IF LPAR exp RPAR statement 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location sxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location sxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode s = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG23
 
+                                               TreeNode result = new TreeNode("statement");
+                                               result.addChild(e);
+                                               result.addChild(s);
+                                               RESULT=result;
+                                               
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -555,8 +736,24 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 22: // statement ::= IF LPAR exp RPAR statement ELSE statement 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-4)).value;
+		Location sxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location sxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode s = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location s1xleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location s1xright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode s1 = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG24
 
+                                                                TreeNode result = new TreeNode("IF ELSE");
+                                                                result.addChild(e);
+                                                                result.addChild(s);
+                                                                result.addChild(s1);
+                                                                RESULT=result;
+                                                                
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -564,8 +761,20 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 23: // statement ::= WHILE LPAR exp RPAR statement 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location sxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location sxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode s = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG25
 
+                                                   TreeNode result = new TreeNode("WHILE");
+                                                   result.addChild(e);
+                                                   result.addChild(s);
+                                                   RESULT=result;
+                                                   
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -573,8 +782,20 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 24: // statement ::= lexp ASSIGN exp 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location lexleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location lexright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode le = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG26
+ 
+                                                 TreeNode result = new TreeNode("ASSIGN");
+                                                 result.addChild(le);
+                                                 result.addChild(e);
+                                                 RESULT=result;
+                                                  
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -582,8 +803,16 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 25: // statement ::= RETURN exp 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG27
 
+                                                   TreeNode result = new TreeNode("RETURN");
+                                                   result.addChild(e);
+                                                   RESULT=result;
+                                                   
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -591,8 +820,15 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 26: // statement ::= NAME LPAR pars RPAR 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location pxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location pxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode p = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		//@@CUPDBG28
+ TreeNode result = new TreeNode("name pars");
+                                           result.addChild(p);
+                                           RESULT=result;
+                                           
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -600,8 +836,15 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 27: // statement ::= block 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location bxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location bxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode b = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG29
+ TreeNode result = new TreeNode("BLOCK");
+                                             result.addChild(b);
+                                             RESULT=result;
+                                             
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -609,8 +852,15 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 28: // statement ::= WRITE exp 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG30
+ TreeNode result = new TreeNode("write");
+                                             result.addChild(e);
+                                             RESULT=result;
+                                             
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -618,8 +868,15 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 29: // statement ::= READ lexp 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location lexleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location lexright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode le = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG31
+ TreeNode result = new TreeNode("READ");
+                                                result.addChild(le);
+                                                RESULT=result;
+                                                
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -627,8 +884,16 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 30: // lexp ::= var 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location vxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location vxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode v = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG32
 
+						  TreeNode result = new TreeNode("Logic expression list");
+			 			  result.addChild(v); 
+					      RESULT = result; 
+					   
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("lexp",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -636,8 +901,18 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 31: // lexp ::= lexp LBRACK exp RBRACK 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location lpxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).xleft;
+		Location lpxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).xright;
+		TreeNode lp = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		//@@CUPDBG33
 
+                                               lp.addChild(e);
+											   RESULT = e; 
+                                            
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("lexp",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -645,8 +920,14 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 32: // exp ::= lexp 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location lexleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location lexright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode le = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG34
+ TreeNode result = new TreeNode("Expression");
+						   result.addChild(le);
+						   RESULT = result;  
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -654,8 +935,21 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 33: // exp ::= exp binop exp 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location exprxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location exprxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode expr = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location bxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location bxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode b = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG35
+expr.addChild(b); 
+										 expr.addChild(e);
+									     RESULT = expr; 
+                                       
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -663,8 +957,19 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 34: // exp ::= unop exp 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location uxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location uxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode u = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG36
+ TreeNode result = new TreeNode("UnvOperat");
+								result.addChild(u);
+								result.addChild(e);
+                                RESULT = result;								
+							 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -672,8 +977,14 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 35: // exp ::= LPAR exp RPAR 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		//@@CUPDBG37
+ TreeNode result = new TreeNode("Expression2");
+						   		result.addChild(e);
+						   		RESULT = result;   
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -681,8 +992,12 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 36: // exp ::= NUMBER 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location nxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location nxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		Integer n = (Integer)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG38
+ RESULT = new TreeNode("Number: " + n); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -690,8 +1005,19 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 37: // exp ::= NAME LPAR pars RPAR 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location nxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).xleft;
+		Location nxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)).xright;
+		String n = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-3)).value;
+		Location pxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xleft;
+		Location pxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).xright;
+		TreeNode p = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		//@@CUPDBG39
+ TreeNode result = new TreeNode("Exp");
+										   result.addChild( new TreeNode(n));
+										   result.addChild(p);
+										   RESULT = result;			 
+										
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -699,8 +1025,12 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 38: // exp ::= QCHAR 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location qxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location qxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		Object q = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG40
+ RESULT = new TreeNode("" + q); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -708,8 +1038,15 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 39: // exp ::= LENGTH lexp 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location l1xleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location l1xright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode l1 = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG41
+ TreeNode result= new TreeNode ("Lexpression");
+							      result.addChild(l1);
+							      RESULT = result;
+							
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("exp",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -717,8 +1054,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 40: // binop ::= MINUS 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG42
+ RESULT = new TreeNode("Minus"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("binop",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -726,8 +1064,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 41: // binop ::= PLUS 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG43
+ RESULT = new TreeNode("Plus"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("binop",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -735,8 +1074,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 42: // binop ::= TIMES 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG44
+ RESULT = new TreeNode("Times"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("binop",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -744,8 +1084,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 43: // binop ::= DIVIDE 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG45
+ RESULT = new TreeNode("Divide"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("binop",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -753,8 +1094,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 44: // binop ::= EQUAL 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG46
+ RESULT = new TreeNode("Equal"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("binop",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -762,8 +1104,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 45: // binop ::= NEQUAL 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG47
+ RESULT = new TreeNode("Not Equal"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("binop",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -771,8 +1114,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 46: // binop ::= GREATER 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG48
+ RESULT = new TreeNode("Greater"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("binop",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -780,8 +1124,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 47: // binop ::= LESS 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG49
+ RESULT = new TreeNode("Less"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("binop",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -789,8 +1134,9 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 48: // unop ::= MINUS 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG50
+ RESULT = new TreeNode("Minus"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("unop",14, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -798,17 +1144,28 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 49: // unop ::= NOT 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG51
+ RESULT = new TreeNode("Not"); 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("unop",14, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 50: // pars ::= exp COMMA pars 
+          case 50: // pars ::= pars COMMA exp 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location pxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
+		Location pxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xright;
+		TreeNode p = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG52
 
+								  		p.addChild(e);
+								  		RESULT = p;
+							       
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("pars",15, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -816,8 +1173,16 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 51: // pars ::= exp 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		Location exleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location exright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		TreeNode e = (TreeNode)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG53
+ 
+								  		TreeNode result = new TreeNode("Expression");
+			 					  		result.addChild(e); 
+					     		  		RESULT = result;
+							       
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("pars",15, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -825,8 +1190,11 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 52: // pars ::= 
             {
-              Object RESULT =null;
-
+              TreeNode RESULT =null;
+		//@@CUPDBG54
+						
+									 
+								
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("pars",15, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -834,8 +1202,16 @@ class CUP$Parser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 53: // var ::= NAME 
             {
-              Object RESULT =null;
+              TreeNode RESULT =null;
+		Location nxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location nxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		String n = (String)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG55
 
+						TreeNode result = new TreeNode("Variable");
+						result.addChild(new TreeNode(n));
+						RESULT = result;  
+				     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("var",16, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

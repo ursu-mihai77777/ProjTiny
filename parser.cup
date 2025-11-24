@@ -4,7 +4,7 @@
 */
 
 package cup.example;
-
+import cup.example.TreeNode;
 import java_cup.runtime.*;
 import cup.example.Lexer;
 import java.io.IOException;
@@ -13,6 +13,11 @@ import java.io.FileInputStream;
 
 parser code {:
   protected Lexer lexer;
+  protected TreeNode parseTreeRoot;
+  public TreeNode getParseTreeRoot()
+  {
+	return parseTreeRoot;
+  }
 :}
 
 /* define how to connect to the scanner! */
@@ -43,24 +48,24 @@ terminal String NAME;
 terminal Integer    NUMBER;        // our scanner provides numbers as integers
 
 /* Non terminals */
-non terminal program;
-non terminal declaration;
-non terminal fun_declaration;
-non terminal formal_pars;
-non terminal formal_par;
-non terminal block;
-non terminal var_declaration;
-non terminal var_declarations;
-non terminal type;
-non terminal statements;
-non terminal statement;
-non terminal lexp;
-non terminal exp;
-non terminal binop;
-non terminal unop;
-non terminal pars;
-non terminal var;
-non terminal formal_parameters;
+non terminal TreeNode program;
+non terminal TreeNode declaration;
+non terminal TreeNode fun_declaration;
+non terminal TreeNode formal_pars;
+non terminal TreeNode formal_par;
+non terminal TreeNode block;
+non terminal TreeNode var_declaration;
+non terminal TreeNode var_declarations;
+non terminal TreeNode type;
+non terminal TreeNode statements;
+non terminal TreeNode statement;
+non terminal TreeNode lexp;
+non terminal TreeNode exp;
+non terminal TreeNode binop;
+non terminal TreeNode unop;
+non terminal TreeNode pars;
+non terminal TreeNode var;
+non terminal TreeNode formal_parameters;
 
 
 /* Precedences */
@@ -75,107 +80,250 @@ precedence left ELSE;
 start with program;
 
 /* The grammar rules */
-    program ::= declaration program
-			| declaration
+    program ::= declaration:decl program:prog {:prog.addChild(decl); RESULT = prog; :}
+			| declaration:decl {:
+			                      parseTreeRoot = new TreeNode("Program");
+			                      parseTreeRoot.addChild(decl);
+			                      RESULT = parseTreeRoot;
+			                     :}
 			;
 
 // declaration : fun_declaration | var_declaration
-declaration ::= fun_declaration
-			| var_declaration
+declaration ::= fun_declaration:fd {: TreeNode result = new TreeNode("Declaration");
+                                      result.addChild(fd);
+                                      RESULT=result;
+                                      :}
+			| var_declaration:vd {: TreeNode result = new TreeNode("Declaration");
+			                        result.addChild(vd);
+			                        RESULT=result;
+			                        :}
 			;
 
 // fun_declaration : type NAME LPAR formal_pars RPAR block
-fun_declaration ::= type NAME LPAR formal_parameters RPAR block
+fun_declaration ::= type:t NAME:n LPAR formal_parameters:fp RPAR block:b {: 
+                                                                           TreeNode result = new TreeNode("Function" + n);
+                                                                           result.addChild(t);
+                                                                           result.addChild(fp);
+                                                                           result.addChild(b);
+                                                                           RESULT=result;
+                                                                           :}
                   ;
 
 // formal_pars : formal_par [ COMMA formal_par ]* | // empty
-formal_pars ::=formal_pars COMMA formal_par
-              | formal_par
+formal_pars ::=formal_pars:fps COMMA formal_par:fp {: fps.addChild(fp);
+                                                       :}
+                                                     
+              | formal_par:fp {: 
+                                  TreeNode params= new TreeNode("ParamsList");
+                                  params.addChild(fp);
+                                  RESULT=params; 
+                                  :}
               ;
-formal_parameters ::= formal_pars 
-                    | /*empty */
+formal_parameters ::= formal_pars:fps {: TreeNode params = new TreeNode("ParamsList");
+                                        params.addChild(fps);
+                                        RESULT = params;
+                                        :}
+                    | /*empty */  {: TreeNode result = new TreeNode ("Formal Parameters");
+                                      RESULT = result;
+                                      :}
                     ;
 
 // formal_par : type NAME
-formal_par ::= type NAME
+formal_par ::= type:t NAME:n {: TreeNode result = new TreeNode("ParamsList " + n);
+                                 result.addChild(t);
+                                 RESULT= result;
+                                 :}
              ;
 
 // block : LBRACE var_declaration* statements RBRACE
-block ::= LBRACE var_declarations statements RBRACE
+block ::= LBRACE var_declarations:vds statements:stmt RBRACE {:
+                                                              TreeNode result = new TreeNode("Block");
+                                                              result.addChild(vds);
+                                                              result.addChild(stmt);
+                                                              RESULT=result;
+                                                              :}
         ;
 
 // var_declaration : type NAME SEMICOLON
-var_declaration ::= type NAME SEMI
+var_declaration ::= type:t NAME:n SEMI {:
+                                        TreeNode result = new TreeNode("Declaration " + n);
+                                        result.addChild(t);
+                                        RESULT=result;
+                                        :}
                   ;
 
 // var_declarations : zero or more variable declarations
-var_declarations ::= var_declarations var_declaration
-                   | /* empty */
+var_declarations ::= var_declarations:vds var_declaration:vd {:
+                                                               vds.addChild(vd);
+                                                               RESULT=vds;
+                                                               :}
+                   | /* empty */                               {:
+                                                                TreeNode result = new TreeNode("Var Declaration");
+                                                                RESULT=result;
+                                                                :}
                    ;
 
 // type : INT | CHAR | type LBRACK exp RBRACK
-type ::= INT
-      |  CHAR
-      |  type LBRACK exp RBRACK  // array type
+type ::= INT {: RESULT = new TreeNode("TYPE");
+                RESULT.addChild(new TreeNode("INT"));
+                :}
+      |  CHAR {: RESULT = new TreeNode("TYPE");
+               RESULT.addChild( new TreeNode("CHAR"));
+               :}
+      |  type:t LBRACK exp:e RBRACK  // array type 
+                                     {:TreeNode result = new TreeNode("TYPE");
+                                     result.addChild(t);
+                                     result.addChild(e);
+                                     RESULT=result;
+                                     :}
       ;
 
 // statements : statement [ SEMICOLON statement]* | empty
 // Handles both separators and terminators
-statements ::= statements statement SEMI
-             | statements statement
+statements ::= statements:stmts statement:stmt SEMI 
+                                            {:
+                                            stmts.addChild(stmt);
+                                            RESULT = stmts;
+                                            :}
+             | statements:stmts statement:stmt
+                                              {:
+                                               stmts.addChild(stmt);
+                                               RESULT=stmts;
+                                              :}
              | /* empty */
+                                                                {:
+                                                                TreeNode result = new TreeNode("Statement Declaration");
+                                                                RESULT=result;
+                                                                :}
              ;
 
-// statement : multiple alternatives as per PDF
-statement ::= IF LPAR exp RPAR statement
-           |  IF LPAR exp RPAR statement ELSE statement
-           |  WHILE LPAR exp RPAR statement
-           |  lexp ASSIGN exp
-           |  RETURN exp
-           |  NAME LPAR pars RPAR     // function call
-           |  block
-           |  WRITE exp
-           |  READ lexp
+statement ::= IF LPAR exp:e RPAR statement:s {:
+                                               TreeNode result = new TreeNode("statement");
+                                               result.addChild(e);
+                                               result.addChild(s);
+                                               RESULT=result;
+                                               :}
+           |  IF LPAR exp:e RPAR statement:s ELSE statement:s1 {:
+                                                                TreeNode result = new TreeNode("IF ELSE");
+                                                                result.addChild(e);
+                                                                result.addChild(s);
+                                                                result.addChild(s1);
+                                                                RESULT=result;
+                                                                :}
+           |  WHILE LPAR exp:e RPAR statement:s   {:
+                                                   TreeNode result = new TreeNode("WHILE");
+                                                   result.addChild(e);
+                                                   result.addChild(s);
+                                                   RESULT=result;
+                                                   :}
+           |  lexp:le ASSIGN exp:e               {: 
+                                                 TreeNode result = new TreeNode("ASSIGN");
+                                                 result.addChild(le);
+                                                 result.addChild(e);
+                                                 RESULT=result;
+                                                  :}
+           |  RETURN exp:e                       {:
+                                                   TreeNode result = new TreeNode("RETURN");
+                                                   result.addChild(e);
+                                                   RESULT=result;
+                                                   :}
+                                                   
+           |  NAME LPAR pars:p RPAR     // function call
+                                           {: TreeNode result = new TreeNode("name pars");
+                                           result.addChild(p);
+                                           RESULT=result;
+                                           :}
+                                           
+           |  block:b                     {: TreeNode result = new TreeNode("BLOCK");
+                                             result.addChild(b);
+                                             RESULT=result;
+                                             :}
+           |  WRITE exp:e                 {: TreeNode result = new TreeNode("write");
+                                             result.addChild(e);
+                                             RESULT=result;
+                                             :}
+           |  READ lexp:le                   {: TreeNode result = new TreeNode("READ");
+                                                result.addChild(le);
+                                                RESULT=result;
+                                                :}
            ;
 
 // lexp : var | lexp LBRACK exp RBRACK
-lexp ::= var
-      |  lexp LBRACK exp RBRACK  // array access
-      ;
+lexp		::= var:v  {:
+						  TreeNode result = new TreeNode("Logic expression list");
+			 			  result.addChild(v); 
+					      RESULT = result; 
+					   :}
+			|	lexp:lp LBRACK exp:e RBRACK {:
+                                               lp.addChild(e);
+											   RESULT = e; 
+                                            :}
+			; 	
 
 // exp : expanded with precedence to resolve conflicts
-exp ::= lexp
-     |  exp binop exp
-     |  unop exp
-     |  LPAR exp RPAR
-     |  NUMBER
-     |  NAME LPAR pars RPAR     // function call
-     |  QCHAR
-     |  LENGTH lexp             // size of an array
-     ;
+exp			::=	lexp:le {: TreeNode result = new TreeNode("Expression");
+						   result.addChild(le);
+						   RESULT = result;  :}
+			|	exp:expr binop:b exp:e {:expr.addChild(b); 
+										 expr.addChild(e);
+									     RESULT = expr; 
+                                       :}
+										
+			|	unop:u exp:e {: TreeNode result = new TreeNode("UnvOperat");
+								result.addChild(u);
+								result.addChild(e);
+                                RESULT = result;								
+							 :}
+			|	LPAR exp:e RPAR {: TreeNode result = new TreeNode("Expression2");
+						   		result.addChild(e);
+						   		RESULT = result;   :}
+			|	NUMBER:n {: RESULT = new TreeNode("Number: " + n); :}
+			|	NAME:n LPAR pars:p RPAR {: TreeNode result = new TreeNode("Exp");
+										   result.addChild( new TreeNode(n));
+										   result.addChild(p);
+										   RESULT = result;			 
+										:}
+			|	QCHAR:q {: RESULT = new TreeNode("" + q); :}
+			|	LENGTH lexp:l1 {: TreeNode result= new TreeNode ("Lexpression");
+							      result.addChild(l1);
+							      RESULT = result;
+							:}
+			;
 
 // binop : as per PDF specification
-binop ::= MINUS
-       |  PLUS
-       |  TIMES
-       |  DIVIDE
-       |  EQUAL
-       |  NEQUAL
-       |  GREATER
-       |  LESS
-       ;
-
+binop		::= MINUS {: RESULT = new TreeNode("Minus"); :}
+			|	PLUS  {: RESULT = new TreeNode("Plus"); :}
+			|	TIMES {: RESULT = new TreeNode("Times"); :}
+			|	DIVIDE {: RESULT = new TreeNode("Divide"); :}
+			|	EQUAL  {: RESULT = new TreeNode("Equal"); :}
+			|	NEQUAL {: RESULT = new TreeNode("Not Equal"); :}
+			|	GREATER {: RESULT = new TreeNode("Greater"); :}
+			|	LESS {: RESULT = new TreeNode("Less"); :}
+			;
 // unop : as per PDF specification
-unop ::= MINUS
-      |  NOT
-      ;
+unop		::= MINUS {: RESULT = new TreeNode("Minus"); :}
+			|	NOT  {: RESULT = new TreeNode("Not"); :}
+			;
 
 // pars : exp [COMMA exp]* | empty
-pars ::= exp COMMA pars
-      |  exp
-      |  /* empty */
-      ;
+pars		::= pars:p COMMA exp:e {:
+								  		p.addChild(e);
+								  		RESULT = p;
+							       :}
+			|	exp:e			   {: 
+								  		TreeNode result = new TreeNode("Expression");
+			 					  		result.addChild(e); 
+					     		  		RESULT = result;
+							       :}
+			|   			   {:						
+									 
+								:}
+			;		
 
 // var : NAME
-var ::= NAME
-      ;
+var			::= NAME:n {:
+						TreeNode result = new TreeNode("Variable");
+						result.addChild(new TreeNode(n));
+						RESULT = result;  
+				     :}
+			;
