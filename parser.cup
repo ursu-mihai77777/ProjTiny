@@ -4,7 +4,8 @@
 */
 
 package cup.example;
-import cup.example.TreeNode;
+import cup.example.*;
+import symbols.*;
 import java_cup.runtime.*;
 import cup.example.Lexer;
 import java.io.IOException;
@@ -13,10 +14,10 @@ import java.io.FileInputStream;
 
 parser code {:
   protected Lexer lexer;
-  protected TreeNode parseTreeRoot;
-  public TreeNode getParseTreeRoot()
+  protected TreeNode syntaxTree = null;
+  public TreeNode getSyntaxTree()
   {
-	return parseTreeRoot;
+	return syntaxTree;
   }
 :}
 
@@ -80,20 +81,23 @@ precedence left ELSE;
 start with program;
 
 /* The grammar rules */
-    program ::= declaration:decl program:prog {:prog.addChild(decl); RESULT = prog; :}
+    program ::= program:prog declaration:decl {: 
+											prog.addChild(decl); 
+											RESULT = prog; 
+										:}
 			| declaration:decl {:
-			                      parseTreeRoot = new TreeNode("Program");
-			                      parseTreeRoot.addChild(decl);
-			                      RESULT = parseTreeRoot;
+			                      syntaxTree = new TreeNode("Program");
+                                    syntaxTree.addChild(decl);
+                                    RESULT = syntaxTree;
 			                     :}
 			;
 
 // declaration : fun_declaration | var_declaration
-declaration ::= fun_declaration:fd {: TreeNode result = new TreeNode("Declaration");
+declaration ::= fun_declaration:fd {: TreeNode result = new TreeNode("FunDeclaration");
                                       result.addChild(fd);
                                       RESULT=result;
                                       :}
-			| var_declaration:vd {: TreeNode result = new TreeNode("Declaration");
+			| var_declaration:vd {: TreeNode result = new TreeNode("VarDeclaration");
 			                        result.addChild(vd);
 			                        RESULT=result;
 			                        :}
@@ -101,7 +105,7 @@ declaration ::= fun_declaration:fd {: TreeNode result = new TreeNode("Declaratio
 
 // fun_declaration : type NAME LPAR formal_pars RPAR block
 fun_declaration ::= type:t NAME:n LPAR formal_parameters:fp RPAR block:b {: 
-                                                                           TreeNode result = new TreeNode("Function" + n);
+                                                                           TreeNode result = new TreeNode("Function" , n);
                                                                            result.addChild(t);
                                                                            result.addChild(fp);
                                                                            result.addChild(b);
@@ -111,6 +115,7 @@ fun_declaration ::= type:t NAME:n LPAR formal_parameters:fp RPAR block:b {:
 
 // formal_pars : formal_par [ COMMA formal_par ]* | // empty
 formal_pars ::=formal_pars:fps COMMA formal_par:fp {: fps.addChild(fp);
+                                                      RESULT=fps;
                                                        :}
                                                      
               | formal_par:fp {: 
@@ -129,7 +134,7 @@ formal_parameters ::= formal_pars:fps {: TreeNode params = new TreeNode("ParamsL
                     ;
 
 // formal_par : type NAME
-formal_par ::= type:t NAME:n {: TreeNode result = new TreeNode("ParamsList " + n);
+formal_par ::= type:t NAME:n {: TreeNode result = new TreeNode("ParamsList " , n);
                                  result.addChild(t);
                                  RESULT= result;
                                  :}
@@ -138,7 +143,9 @@ formal_par ::= type:t NAME:n {: TreeNode result = new TreeNode("ParamsList " + n
 // block : LBRACE var_declaration* statements RBRACE
 block ::= LBRACE var_declarations:vds statements:stmt RBRACE {:
                                                               TreeNode result = new TreeNode("Block");
+                                                              TreeNode locals = new TreeNode("LocalVariables");
                                                               result.addChild(vds);
+                                                              result.addChild(locals);            
                                                               result.addChild(stmt);
                                                               RESULT=result;
                                                               :}
@@ -146,7 +153,8 @@ block ::= LBRACE var_declarations:vds statements:stmt RBRACE {:
 
 // var_declaration : type NAME SEMICOLON
 var_declaration ::= type:t NAME:n SEMI {:
-                                        TreeNode result = new TreeNode("Declaration " + n);
+                                        TreeNode result = new TreeNode("VarDeclaration");
+										result.addChild(new TreeNode(n));
                                         result.addChild(t);
                                         RESULT=result;
                                         :}
@@ -158,7 +166,7 @@ var_declarations ::= var_declarations:vds var_declaration:vd {:
                                                                RESULT=vds;
                                                                :}
                    | /* empty */                               {:
-                                                                TreeNode result = new TreeNode("Var Declaration");
+                                                                TreeNode result = new TreeNode("VarDeclarations");
                                                                 RESULT=result;
                                                                 :}
                    ;
@@ -250,13 +258,13 @@ statement ::= IF LPAR exp:e RPAR statement:s {:
 
 // lexp : var | lexp LBRACK exp RBRACK
 lexp		::= var:v  {:
-						  TreeNode result = new TreeNode("Logic expression list");
+						  TreeNode result = new TreeNode("Left expression list");
 			 			  result.addChild(v); 
 					      RESULT = result; 
 					   :}
 			|	lexp:lp LBRACK exp:e RBRACK {:
                                                lp.addChild(e);
-											   RESULT = e; 
+											   RESULT = lp; 
                                             :}
 			; 	
 
@@ -277,7 +285,7 @@ exp			::=	lexp:le {: TreeNode result = new TreeNode("Expression");
 			|	LPAR exp:e RPAR {: TreeNode result = new TreeNode("Expression2");
 						   		result.addChild(e);
 						   		RESULT = result;   :}
-			|	NUMBER:n {: RESULT = new TreeNode("Number: " + n); :}
+			|	NUMBER:n {: RESULT = new TreeNode("Number: "); :}
 			|	NAME:n LPAR pars:p RPAR {: TreeNode result = new TreeNode("Exp");
 										   result.addChild( new TreeNode(n));
 										   result.addChild(p);
