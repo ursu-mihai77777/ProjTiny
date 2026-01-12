@@ -3,6 +3,7 @@ import cup.example.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java_cup.runtime.*;
+import symbols.SemanticAnalyzer;
 import symbols.SymbolsTable;
 
 
@@ -15,9 +16,16 @@ class Driver {
 	        TreeNode root = parser.getSyntaxTree();
 	        TreeNodePrinter treePrinter = new TreeNodePrinter(root);
 	        treePrinter.print();
-	        SymbolsTable table = new SymbolsTable(root);
-	        table.createTable();
-	        table.printTable();
+	     // parse() returns a Symbol
+	        Symbol result = parser.parse();
+
+	        // the AST root is inside value
+	        TreeNode ast = (TreeNode) result.value;
+
+	        SemanticAnalyzer sa = new SemanticAnalyzer();
+	        sa.analyze(ast);
+
+	        System.out.println("Semantic analysis completed successfully.");
 		/*TreeNode root = new TreeNode("Root");
 		root.addChild(new TreeNode("Root->Child1"));
 		root.addChild(new TreeNode("Root->Child2"));
