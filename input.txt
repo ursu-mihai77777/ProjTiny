@@ -1,12 +1,10 @@
-int a;
-int b;
 
 int sum_max(int a, int b){
+   int a;
 	int max;
 	int sum;
-	int max;
-	int a;
 	max = 0;	
+	
 	
 	if (a > b) {
 		max = a

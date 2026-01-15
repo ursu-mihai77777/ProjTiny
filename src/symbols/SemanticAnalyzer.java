@@ -133,14 +133,10 @@ public class SemanticAnalyzer {
         if (typeNode.getChildren() == null || typeNode.getChildren().length == 0) return;
         String type = typeNode.getChildren()[0].getData();
 
-        try {
-            currentScope.insert(name, type);
-            printIndent();
-            System.out.println("VarDecl " + name + "; type:  " + type);
-        } catch (RuntimeException e) {
-            printIndent();
-            System.out.println("ERROR: " + e.getMessage());
-        }
+        // This will throw RuntimeException if duplicate
+        currentScope.insert(name, type);
+        printIndent();
+        System.out.println("VarDecl " + name + "; type:  " + type);
     }
 
     private void handleFunction(TreeNode node) {
@@ -173,11 +169,16 @@ public class SemanticAnalyzer {
 
         enterScope();
         collectParams(paramsNode);
-        analyzeNode(blockNode);
+        // Process block but don't create new scope (we already created one for function)
+        handleBlockWithoutScope(blockNode);
         exitScope();
     }
 
     private void handleBlock(TreeNode node) {
+        handleBlockWithoutScope(node);
+    }
+
+    private void handleBlockWithoutScope(TreeNode node) {
         if (node.getChildren() == null) return;
 
         // Count local variables and statements
@@ -208,8 +209,6 @@ public class SemanticAnalyzer {
         printIndent();
         System.out.println("Block - " + localVarCount + " locals; " + statementCount + " statements;");
 
-        enterScope();
-
         // Process variable declarations
         if (varDeclarations != null && varDeclarations.getChildren() != null) {
             for (TreeNode varDecl : varDeclarations.getChildren()) {
@@ -221,8 +220,6 @@ public class SemanticAnalyzer {
         if (statementDeclaration != null) {
             analyzeNode(statementDeclaration);
         }
-
-        exitScope();
     }
 
     private void handleIfElse(TreeNode node) {
@@ -399,14 +396,10 @@ public class SemanticAnalyzer {
             typeNode.getChildren() != null && typeNode.getChildren().length > 0) {
             String type = typeNode.getChildren()[0].getData();
             
-            try {
-                currentScope.insert(paramName, type);
-                printIndent();
-                System.out.println("VarDecl " + paramName + "; type:  " + type);
-            } catch (RuntimeException e) {
-                printIndent();
-                System.out.println("ERROR: " + e.getMessage());
-            }
+            // This will throw RuntimeException if duplicate
+            currentScope.insert(paramName, type);
+            printIndent();
+            System.out.println("VarDecl " + paramName + "; type:  " + type);
         }
     }
 
